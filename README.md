@@ -1,7 +1,16 @@
 node-debug tutorial
 ===================
 
-调试
+2种方法
+
+- node debugger
+- node inspector
+
+调试使用3个例子
+
+- hello world
+- 继承例子
+- express helloworld
 
 ## node debug
 
@@ -130,7 +139,7 @@ Manual: http://nodejs.org/api/debugger.html
 
 	ps -ef|grep debug-brk|awk '{print $2}'|xargs kill -9
 
-### node-inspector
+### node inspector
 
 上面这种方式稍微有些麻烦，我们写JS代码调试的时候一般都用FireBug或谷歌浏览器内置的调试工具，nodejs程序当然也可以这样子来调试，但是首先需要安装一个node-inspector的东西
 
