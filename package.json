@@ -1,0 +1,22 @@
+{
+  "name": "node-debug-tutorial",
+  "version": "1.0.0",
+  "description": "node-debug tutorial ===================",
+  "main": "extend.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/i5ting/node-debug-tutorial.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/i5ting/node-debug-tutorial/issues"
+  },
+  "homepage": "https://github.com/i5ting/node-debug-tutorial",
+  "dependencies": {
+    "express": "^4.10.2"
+  }
+}

@@ -1,10 +1,11 @@
 node-debug tutorial
 ===================
 
-2种方法
+3种方法
 
 - node debugger
 - node inspector
+- 测试驱动开发
 
 调试使用3个例子
 
@@ -139,12 +140,14 @@ Manual: http://nodejs.org/api/debugger.html
 
 	ps -ef|grep debug-brk|awk '{print $2}'|xargs kill -9
 
-### node inspector
+## node inspector
+
 
 上面这种方式稍微有些麻烦，我们写JS代码调试的时候一般都用FireBug或谷歌浏览器内置的调试工具，nodejs程序当然也可以这样子来调试，但是首先需要安装一个node-inspector的东西
 
 node-inspector是通过websocket方式来转向debug输入输出的。因此，我们在调试前要先启动node-inspector来监听Nodejs的debug调试端口。
 
+### 安装
 
 这个需要用npm来安装，只需要执行下列语句：
 
@@ -173,7 +176,72 @@ node-inspector是通过websocket方式来转向debug输入输出的。因此，�
 使用方法和chrome的inspect element调试web开发是一样的。
 
 调试还是很方便的，而且可以异地调试。
-  
+
+### 测试extend.js
+
+
+### 测试express helloworld
+
+这种测试一般都是看request里的params，query和body等
+
+准备工作
+
+	npm init .
+	npm install --save express
+	touch express-helloworld.js
+
+
+测试express-helloworld.js代码
+
+	var express = require('express');
+	var app = express();
+
+	app.get('/',function(req,res){
+    	res.send('hello,world');
+	});
+
+	app.listen(5008);
+
+执行
+
+	npm install -g supervisor
+	supervisor express-helloworld.js
 	
+打开浏览器访问http://127.0.0.1:5008/就会看到helloworld返回
+
+此时终止`supervisor express-helloworld.js`,使用`ctrl + c`终止。
+
+然后使用node-inspect调试
+
+	➜  node-debug-tutorial git:(master) ✗ node-debug express-helloworld.js 
+	Node Inspector is now available from http://localhost:8080/debug?port=5858
+	Debugging `express-helloworld.js`
+
+	debugger listening on port 5858
+
+增加断点
+
+![](breakpoint.png)
+
+使用curl来模拟get请求，增加一个参数test，便于一会的debug
+
+```
+curl -G -d "test=string" http://127.0.0.1:5008/
+```
+此时浏览器页面会停在断点处，在console里输入`req.query`即可以查到参数
+
+![](express-debug.png)
+
+
+
+## 测试驱动开发
+
+- tdd
+- bdd
+- 代码覆盖率
+
+  
+## 资源
+
 https://github.com/baryon/tracer
 http://www.habdas.org/node-js-debugging-primer/
