@@ -123,12 +123,21 @@ Press Ctrl + C to leave debug repl
 
 这里就和gdb等调试器一模一样了
 
-Manual: http://nodejs.org/api/debugger.html
 
 回归一下，debug的2种模式：
 
 - js上下文即时求值环境模式
 - debug断点模式
+
+八卦一下啊，你了解vi的3种工作模式么？
+
+- 普通(normal)模式，又称命令模式
+- 插入(insert)模式
+- 命令行(cmdline)模式
+
+化用一下更容易理解
+
+文档: http://nodejs.org/api/debugger.html
 
 ### FAQ
 
@@ -143,7 +152,7 @@ Manual: http://nodejs.org/api/debugger.html
 ## node inspector
 
 
-上面这种方式稍微有些麻烦，我们写JS代码调试的时候一般都用FireBug或谷歌浏览器内置的调试工具，nodejs程序当然也可以这样子来调试，但是首先需要安装一个node-inspector的东西
+上面这种方式稍微有些麻烦，作为前端开发人员，我们写JS代码调试的时候一般都用FireBug或Chrome浏览器内置的调试工具，其实nodejs程序也可以这样子来调试，但是首先需要安装一个node-inspector的模块。
 
 node-inspector是通过websocket方式来转向debug输入输出的。因此，我们在调试前要先启动node-inspector来监听Nodejs的debug调试端口。
 
@@ -167,15 +176,14 @@ node-inspector是通过websocket方式来转向debug输入输出的。因此，�
 
 控制台会返回“debugger listening on port 5858”， 现在打开浏览嚣，访问http://localhost:8080，这时候就会打开一个很像Chrome内置调试工具的界面，并且代码断点在第一行，下面就可以使用这个来调试了。
 
-
-![](./images/debug.png)
+常用调试功能
 
 - 增加断点，查看调用栈，变量等
 - 使用console打印查看日志
 
 使用方法和chrome的inspect element调试web开发是一样的。
 
-调试还是很方便的，而且可以异地调试。
+调试还是很方便的，而且可以远程调试。其实原理很简单，它启动的是一个web server，我们要做的就是把localhost换成对应ip即可，要注意服务器的防火墙哦。
 
 ### 测试extend.js
 
@@ -311,5 +319,23 @@ node_modules/.bin/gulp test
 		
 ## 资源
 
-https://github.com/baryon/tracer
-http://www.habdas.org/node-js-debugging-primer/
+- [debugger官方文档](http://nodejs.org/api/debugger.html)
+- [node-inspector仓库地址](https://github.com/node-inspector/node-inspector)
+
+- [nodeunit](https://github.com/caolan/nodeunit)
+- [mocha](https://github.com/mochajs/mocha)
+
+- https://github.com/baryon/tracer
+- http://www.habdas.org/node-js-debugging-primer/
+
+- https://github.com/visionmedia/mocha
+- http://visionmedia.github.io/mocha/
+- http://mochajs.org/
+- https://github.com/chaijs/chai
+- http://chaijs.com/
+- http://sinonjs.org/
+- http://zombie.labnotes.org/
+- https://github.com/tj/supertest（api test文档）
+- https://github.com/tj/superagent/blob/master/test/node/agency.js（api test示例）
+- https://github.com/i5ting/js-tools-best-practice/blob/master/doc/Gulp.md
+- https://github.com/SBoudrias/gulp-istanbul

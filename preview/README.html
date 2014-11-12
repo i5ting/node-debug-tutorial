@@ -1,0 +1,540 @@
+
+	    <html>
+	      <head>
+				  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	        <title>README</title>
+					
+					<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+					<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+					<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+			
+				  <style>
+					pre {
+					    counter-reset: line-numbering;
+					    border: solid 1px #d9d9d9;
+					    border-radius: 0;
+					    background: #fff;
+					    padding: 0;
+					    line-height: 23px;
+					    margin-bottom: 30px;
+					    white-space: pre;
+					    overflow-x: auto;
+					    word-break: inherit;
+					    word-wrap: inherit;
+					}
+
+					pre a::before {
+					  content: counter(line-numbering);
+					  counter-increment: line-numbering;
+					  padding-right: 1em; /* space after numbers */
+					  width: 25px;
+					  text-align: right;
+					  opacity: 0.7;
+					  display: inline-block;
+					  color: #aaa;
+					  background: #eee;
+					  margin-right: 16px;
+					  padding: 2px 10px;
+					  font-size: 13px;
+					  -webkit-touch-callout: none;
+					  -webkit-user-select: none;
+					  -khtml-user-select: none;
+					  -moz-user-select: none;
+					  -ms-user-select: none;
+					  user-select: none;
+					}
+
+					pre a:first-of-type::before {
+					  padding-top: 10px;
+					}
+
+					pre a:last-of-type::before {
+					  padding-bottom: 10px;
+					}
+
+					pre a:only-of-type::before {
+					  padding: 10px;
+					}
+			
+					.highlight { background-color: #ffffcc } /* RIGHT */
+					</style>
+	      </head>
+	      <body>
+				  <div>
+							<div style='width:25%;'>
+									<ul id="tree" class="ztree" style='width:100%'>
+		
+									</ul>
+							</div>
+			        <div id='readme' style='width:70%;margin-left:20%;'>
+			          	<article class='markdown-body'>
+			            	<style>.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f0f0f0; }
+.highlight .c { color: #60a0b0; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #007020; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #007020 } /* Comment.Preproc */
+.highlight .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #007020 } /* Keyword.Pseudo */
+.highlight .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #902000 } /* Keyword.Type */
+.highlight .m { color: #40a070 } /* Literal.Number */
+.highlight .s { color: #4070a0 } /* Literal.String */
+.highlight .na { color: #4070a0 } /* Name.Attribute */
+.highlight .nb { color: #007020 } /* Name.Builtin */
+.highlight .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+.highlight .no { color: #60add5 } /* Name.Constant */
+.highlight .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+.highlight .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #007020 } /* Name.Exception */
+.highlight .nf { color: #06287e } /* Name.Function */
+.highlight .nl { color: #002070; font-weight: bold } /* Name.Label */
+.highlight .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #bb60d5 } /* Name.Variable */
+.highlight .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #40a070 } /* Literal.Number.Bin */
+.highlight .mf { color: #40a070 } /* Literal.Number.Float */
+.highlight .mh { color: #40a070 } /* Literal.Number.Hex */
+.highlight .mi { color: #40a070 } /* Literal.Number.Integer */
+.highlight .mo { color: #40a070 } /* Literal.Number.Oct */
+.highlight .sb { color: #4070a0 } /* Literal.String.Backtick */
+.highlight .sc { color: #4070a0 } /* Literal.String.Char */
+.highlight .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #4070a0 } /* Literal.String.Double */
+.highlight .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #4070a0 } /* Literal.String.Heredoc */
+.highlight .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+.highlight .sx { color: #c65d09 } /* Literal.String.Other */
+.highlight .sr { color: #235388 } /* Literal.String.Regex */
+.highlight .s1 { color: #4070a0 } /* Literal.String.Single */
+.highlight .ss { color: #517918 } /* Literal.String.Symbol */
+.highlight .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #bb60d5 } /* Name.Variable.Class */
+.highlight .vg { color: #bb60d5 } /* Name.Variable.Global */
+.highlight .vi { color: #bb60d5 } /* Name.Variable.Instance */
+.highlight .il { color: #40a070 } /* Literal.Number.Integer.Long */</style>
+<h1>node-debug tutorial</h1>
+
+<p>3种方法</p>
+
+<ul>
+<li>node debugger</li>
+<li>node inspector</li>
+<li>测试驱动开发</li>
+</ul>
+
+<p>调试使用3个例子</p>
+
+<ul>
+<li>hello world</li>
+<li>继承例子</li>
+<li>express helloworld</li>
+</ul>
+
+<h2>node debug</h2>
+
+<p>V8 提供了一个强大的调试器，可以通过 TCP 协议从外部访问。Nodejs提供了一个内建调试器来帮助开发者调试应用程序。想要开启调试器我们需要在代码中加入debugger标签，当Nodejs执行到debugger标签时会自动暂停（debugger标签相当于在代码中开启一个断点）。</p>
+
+<h3>hello world例子</h3>
+
+<p>代码如下：</p>
+
+<p>see <code>helloword-debug.js</code></p>
+<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">hello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;hello&#39;;</span>
+<span class="vg">var</span><span class="w"> </span><span class="vg">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;nodejs&#39;;</span>
+
+<span class="vg">debugger</span><span class="p">;</span>
+
+<span class="vg">var</span><span class="w"> </span><span class="vg">hello_world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">hello</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1">&#39; &#39; + world;</span>
+<span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">hello_world</span><span class="p">);</span>
+</pre></div>
+<p>执行命令：<code>node debug helloword-debug.js</code> 就可以进入调试模式。</p>
+
+<p>当然，首先需要在程序代码中手动添加中断debugger; ， 这样当以调试模式运行时，程序会自动中断，然后等候你调试，就像GDB一样，可以用help命令查看自己都可以使用哪些调试命令。</p>
+<div class="highlight"><pre><span class="vg">node</span><span class="o">-</span><span class="vg">debug</span><span class="o">-</span><span class="vg">tutorial</span><span class="w"> </span><span class="nl">git:</span><span class="p">(</span><span class="vg">master</span><span class="p">)</span><span class="w"> </span><span class="err">✗</span><span class="w"> </span><span class="vg">node</span><span class="w"> </span><span class="vg">debug</span><span class="w"> </span><span class="vg">helloword</span><span class="o">-</span><span class="vg">debug</span><span class="o">.</span><span class="vg">js</span>
+<span class="o">&lt;</span><span class="w"> </span><span class="vg">debugger</span><span class="w"> </span><span class="vg">listening</span><span class="w"> </span><span class="vg">on</span><span class="w"> </span><span class="vg">port</span><span class="w"> </span><span class="il">5858</span>
+<span class="vg">connecting</span><span class="o">...</span><span class="w"> </span><span class="vg">ok</span>
+<span class="vg">break</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="vg">helloword</span><span class="o">-</span><span class="vg">debug</span><span class="o">.</span><span class="nl">js:</span><span class="il">1</span>
+<span class="w">  </span><span class="il">1</span><span class="w"> </span><span class="vg">var</span><span class="w"> </span><span class="vg">hello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;hello&#39;;</span>
+<span class="w">  </span><span class="il">2</span><span class="w"> </span><span class="vg">var</span><span class="w"> </span><span class="vg">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;nodejs&#39;;</span>
+<span class="w">  </span><span class="il">3</span><span class="w"> </span>
+<span class="vg">debug</span><span class="o">&gt;</span><span class="w"> </span><span class="vg">help</span>
+<span class="nl">Commands:</span><span class="w"> </span><span class="vg">run</span><span class="w"> </span><span class="p">(</span><span class="vg">r</span><span class="p">),</span><span class="w"> </span><span class="vg">cont</span><span class="w"> </span><span class="p">(</span><span class="vg">c</span><span class="p">),</span><span class="w"> </span><span class="vg">next</span><span class="w"> </span><span class="p">(</span><span class="vg">n</span><span class="p">),</span><span class="w"> </span><span class="vg">step</span><span class="w"> </span><span class="p">(</span><span class="vg">s</span><span class="p">),</span><span class="w"> </span><span class="vg">out</span><span class="w"> </span><span class="p">(</span><span class="vg">o</span><span class="p">),</span><span class="w"> </span><span class="vg">backtrace</span><span class="w"> </span><span class="p">(</span><span class="vg">bt</span><span class="p">),</span><span class="w"> </span><span class="vg">setBreakpoint</span><span class="w"> </span><span class="p">(</span><span class="vg">sb</span><span class="p">),</span><span class="w"> </span><span class="vg">clearBreakpoint</span><span class="w"> </span><span class="p">(</span><span class="vg">cb</span><span class="p">),</span>
+<span class="vg">watch</span><span class="p">,</span><span class="w"> </span><span class="vg">unwatch</span><span class="p">,</span><span class="w"> </span><span class="vg">watchers</span><span class="p">,</span><span class="w"> </span><span class="vg">repl</span><span class="p">,</span><span class="w"> </span><span class="vg">restart</span><span class="p">,</span><span class="w"> </span><span class="vg">kill</span><span class="p">,</span><span class="w"> </span><span class="vg">list</span><span class="p">,</span><span class="w"> </span><span class="vg">scripts</span><span class="p">,</span><span class="w"> </span><span class="vg">breakOnException</span><span class="p">,</span><span class="w"> </span><span class="vg">breakpoints</span><span class="p">,</span><span class="w"> </span><span class="vg">version</span>
+<span class="vg">debug</span><span class="o">&gt;</span><span class="w"> </span>
+<span class="vg">debug</span><span class="o">&gt;</span><span class="w"> </span><span class="vg">n</span>
+<span class="vg">break</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="vg">helloword</span><span class="o">-</span><span class="vg">debug</span><span class="o">.</span><span class="nl">js:</span><span class="il">2</span>
+<span class="w">  </span><span class="il">1</span><span class="w"> </span><span class="vg">var</span><span class="w"> </span><span class="vg">hello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;hello&#39;;</span>
+<span class="w">  </span><span class="il">2</span><span class="w"> </span><span class="vg">var</span><span class="w"> </span><span class="vg">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;nodejs&#39;;</span>
+<span class="w">  </span><span class="il">3</span><span class="w"> </span>
+<span class="w">  </span><span class="il">4</span><span class="w"> </span><span class="vg">debugger</span><span class="p">;</span>
+<span class="vg">debug</span><span class="o">&gt;</span><span class="w"> </span><span class="vg">repl</span>
+<span class="vg">Press</span><span class="w"> </span><span class="vg">Ctrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="vg">C</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">leave</span><span class="w"> </span><span class="vg">debug</span><span class="w"> </span><span class="vg">repl</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="vg">hello</span>
+<span class="c1">&#39;hello&#39;</span>
+</pre></div>
+<p>此时repl打开js上下文即时求值环境，和chrome的debug的console是一样的。</p>
+
+<p>如果想退出，请按下<code>ctrl + c</code>,这样就可以返 到debug模式</p>
+<div class="highlight"><pre><span class="vg">debug</span><span class="o">&gt;</span><span class="w"> </span><span class="vg">n</span>
+<span class="vg">break</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="vg">helloword</span><span class="o">-</span><span class="vg">debug</span><span class="o">.</span><span class="nl">js:</span><span class="il">4</span>
+<span class="w">  </span><span class="il">2</span><span class="w"> </span><span class="vg">var</span><span class="w"> </span><span class="vg">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;nodejs&#39;;</span>
+<span class="w">  </span><span class="il">3</span><span class="w"> </span>
+<span class="w">  </span><span class="il">4</span><span class="w"> </span><span class="vg">debugger</span><span class="p">;</span>
+<span class="w">  </span><span class="il">5</span><span class="w"> </span>
+<span class="w">  </span><span class="il">6</span><span class="w"> </span><span class="vg">var</span><span class="w"> </span><span class="vg">hello_world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">hello</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1">&#39; &#39; + world;</span>
+<span class="vg">debug</span><span class="o">&gt;</span><span class="w"> </span><span class="vg">n</span>
+<span class="vg">break</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="vg">helloword</span><span class="o">-</span><span class="vg">debug</span><span class="o">.</span><span class="nl">js:</span><span class="il">6</span>
+<span class="w">  </span><span class="il">4</span><span class="w"> </span><span class="vg">debugger</span><span class="p">;</span>
+<span class="w">  </span><span class="il">5</span><span class="w"> </span>
+<span class="w">  </span><span class="il">6</span><span class="w"> </span><span class="vg">var</span><span class="w"> </span><span class="vg">hello_world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">hello</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1">&#39; &#39; + world;</span>
+<span class="w">  </span><span class="il">7</span><span class="w"> </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">hello_world</span><span class="p">);</span>
+<span class="w">  </span><span class="il">8</span><span class="w"> </span>
+<span class="vg">debug</span><span class="o">&gt;</span><span class="w"> </span><span class="vg">n</span>
+<span class="vg">break</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="vg">helloword</span><span class="o">-</span><span class="vg">debug</span><span class="o">.</span><span class="nl">js:</span><span class="il">7</span>
+<span class="w">  </span><span class="il">5</span><span class="w"> </span>
+<span class="w">  </span><span class="il">6</span><span class="w"> </span><span class="vg">var</span><span class="w"> </span><span class="vg">hello_world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">hello</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1">&#39; &#39; + world;</span>
+<span class="w">  </span><span class="il">7</span><span class="w"> </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">hello_world</span><span class="p">);</span>
+<span class="w">  </span><span class="il">8</span><span class="w"> </span>
+<span class="w">  </span><span class="il">9</span><span class="w"> </span><span class="p">});</span>
+<span class="vg">debug</span><span class="o">&gt;</span><span class="w"> </span><span class="vg">repl</span>
+<span class="vg">Press</span><span class="w"> </span><span class="vg">Ctrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="vg">C</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">leave</span><span class="w"> </span><span class="vg">debug</span><span class="w"> </span><span class="vg">repl</span>
+<span class="o">&gt;</span><span class="w"> </span><span class="vg">hello_world</span>
+<span class="c1">&#39;hello nodejs&#39;</span>
+<span class="o">&gt;</span><span class="w"> </span>
+</pre></div>
+<p>如果想终止调试，请按下2次<code>ctrl + c</code>键</p>
+
+<h3>命令说明</h3>
+
+<table><thead>
+<tr>
+<th>可选项</th>
+<th>用途</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>run</td>
+<td>执行脚本,在第一行暂停</td>
+</tr>
+<tr>
+<td>restart</td>
+<td>重新执行脚本</td>
+</tr>
+<tr>
+<td>cont, c</td>
+<td>继续执行,直到遇到下一个断点</td>
+</tr>
+<tr>
+<td>next, n</td>
+<td>单步执行</td>
+</tr>
+<tr>
+<td>step, s</td>
+<td>单步执行并进入函数</td>
+</tr>
+<tr>
+<td>out, o</td>
+<td>从函数中步出</td>
+</tr>
+<tr>
+<td>setBreakpoint(), sb()</td>
+<td>当前行设置断点</td>
+</tr>
+<tr>
+<td>setBreakpoint(‘f()’), sb(...)</td>
+<td>在函数f的第一行设置断点</td>
+</tr>
+<tr>
+<td>setBreakpoint(‘script.js’, 20), sb(...)</td>
+<td>在 script.js 的第20行设置断点</td>
+</tr>
+<tr>
+<td>clearBreakpoint, cb(...)</td>
+<td>清除所有断点</td>
+</tr>
+<tr>
+<td>backtrace, bt</td>
+<td>显示当前的调用栈</td>
+</tr>
+<tr>
+<td>list(5)</td>
+<td>显示当前执行到的前后5行代码</td>
+</tr>
+<tr>
+<td>watch(expr)</td>
+<td>把表达式 expr 加入监视列表</td>
+</tr>
+<tr>
+<td>unwatch(expr)</td>
+<td>把表达式 expr 从监视列表移除</td>
+</tr>
+<tr>
+<td>watchers</td>
+<td>显示监视列表中所有的表达式和值</td>
+</tr>
+<tr>
+<td>repl</td>
+<td>在当前上下文打开即时求值环境</td>
+</tr>
+<tr>
+<td>kill</td>
+<td>终止当前执行的脚本</td>
+</tr>
+<tr>
+<td>scripts</td>
+<td>显示当前已加载的所有脚本</td>
+</tr>
+<tr>
+<td>version</td>
+<td>显示v8版本</td>
+</tr>
+</tbody></table>
+
+<p>这里就和gdb等调试器一模一样了</p>
+
+<p>回归一下，debug的2种模式：</p>
+
+<ul>
+<li>js上下文即时求值环境模式</li>
+<li>debug断点模式</li>
+</ul>
+
+<p>八卦一下啊，你了解vi的3种工作模式么？</p>
+
+<ul>
+<li>普通(normal)模式，又称命令模式</li>
+<li>插入(insert)模式</li>
+<li>命令行(cmdline)模式</li>
+</ul>
+
+<p>化用一下更容易理解</p>
+
+<p>文档: http://nodejs.org/api/debugger.html</p>
+
+<h3>FAQ</h3>
+
+<p>注意,如果出现</p>
+<div class="highlight"><pre><span class="o">&lt;</span><span class="w"> </span><span class="vg">Failed</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">open</span><span class="w"> </span><span class="vg">socket</span><span class="w"> </span><span class="vg">on</span><span class="w"> </span><span class="vg">port</span><span class="w"> </span><span class="il">5858</span><span class="p">,</span><span class="w"> </span><span class="vg">waiting</span><span class="w"> </span><span class="il">1000</span><span class="w"> </span><span class="vg">ms</span><span class="w"> </span><span class="vg">before</span><span class="w"> </span><span class="vg">retrying</span>
+</pre></div>
+<p>请结束掉所有debug进程</p>
+<div class="highlight"><pre><span class="vg">ps</span><span class="w"> </span><span class="o">-</span><span class="vg">ef</span><span class="o">|</span><span class="vg">grep</span><span class="w"> </span><span class="vg">debug</span><span class="o">-</span><span class="vg">brk</span><span class="o">|</span><span class="vg">awk</span><span class="w"> </span><span class="c1">&#39;{print $2}&#39;|xargs kill -9</span>
+</pre></div>
+<h2>node inspector</h2>
+
+<p>上面这种方式稍微有些麻烦，作为前端开发人员，我们写JS代码调试的时候一般都用FireBug或Chrome浏览器内置的调试工具，其实nodejs程序也可以这样子来调试，但是首先需要安装一个node-inspector的模块。</p>
+
+<p>node-inspector是通过websocket方式来转向debug输入输出的。因此，我们在调试前要先启动node-inspector来监听Nodejs的debug调试端口。</p>
+
+<h3>安装</h3>
+
+<p>这个需要用npm来安装，只需要执行下列语句：</p>
+<div class="highlight"><pre><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">-</span><span class="vg">g</span><span class="w"> </span><span class="vg">node</span><span class="o">-</span><span class="vg">inspector</span>
+</pre></div>
+<p>安装完成之后，通常可以直接这样启动在后台：</p>
+<div class="highlight"><pre><span class="vg">node</span><span class="o">-</span><span class="vg">inspector</span><span class="w"> </span><span class="o">&amp;</span>
+</pre></div>
+<p>默认会监听8080端口，当然，也可能通过使用--web-port参数来修改。然后，在执行node程序的时候，多加个参数：--debug-brk, 如下：</p>
+<div class="highlight"><pre><span class="vg">node</span><span class="w"> </span><span class="o">--</span><span class="vg">debug</span><span class="o">-</span><span class="vg">brk</span><span class="w"> </span><span class="vg">app</span><span class="o">.</span><span class="vg">js</span>
+</pre></div>
+<p>或者</p>
+<div class="highlight"><pre><span class="vg">node</span><span class="o">-</span><span class="vg">debug</span><span class="w"> </span><span class="vg">app</span><span class="o">.</span><span class="vg">js</span>
+</pre></div>
+<p>控制台会返回“debugger listening on port 5858”， 现在打开浏览嚣，访问http://localhost:8080，这时候就会打开一个很像Chrome内置调试工具的界面，并且代码断点在第一行，下面就可以使用这个来调试了。</p>
+
+<p>常用调试功能</p>
+
+<ul>
+<li>增加断点，查看调用栈，变量等</li>
+<li>使用console打印查看日志</li>
+</ul>
+
+<p>使用方法和chrome的inspect element调试web开发是一样的。</p>
+
+<p>调试还是很方便的，而且可以远程调试。其实原理很简单，它启动的是一个web server，我们要做的就是把localhost换成对应ip即可，要注意服务器的防火墙哦。</p>
+
+<h3>测试extend.js</h3>
+
+<h3>测试express helloworld</h3>
+
+<p>这种测试一般都是看request里的params，query和body等</p>
+
+<p>准备工作</p>
+<div class="highlight"><pre><span class="vg">npm</span><span class="w"> </span><span class="vg">init</span><span class="w"> </span><span class="o">.</span>
+<span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="w"> </span><span class="vg">express</span>
+<span class="vg">touch</span><span class="w"> </span><span class="vg">express</span><span class="o">-</span><span class="vg">helloworld</span><span class="o">.</span><span class="vg">js</span>
+</pre></div>
+<p>测试express-helloworld.js代码</p>
+<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;express&#39;);</span>
+<span class="vg">var</span><span class="w"> </span><span class="vg">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">express</span><span class="p">();</span>
+
+<span class="vg">app</span><span class="o">.</span><span class="vg">get</span><span class="p">(</span><span class="c1">&#39;/&#39;,function(req,res){</span>
+<span class="w">    </span><span class="vg">res</span><span class="o">.</span><span class="vg">send</span><span class="p">(</span><span class="c1">&#39;hello,world&#39;);</span>
+<span class="p">});</span>
+
+<span class="vg">app</span><span class="o">.</span><span class="vg">listen</span><span class="p">(</span><span class="il">5008</span><span class="p">);</span>
+</pre></div>
+<p>执行,安装服务器自动重载模块</p>
+<div class="highlight"><pre><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">-</span><span class="vg">g</span><span class="w"> </span><span class="vg">supervisor</span>
+<span class="vg">supervisor</span><span class="w"> </span><span class="vg">express</span><span class="o">-</span><span class="vg">helloworld</span><span class="o">.</span><span class="vg">js</span>
+</pre></div>
+<p>打开浏览器访问http://127.0.0.1:5008/就会看到helloworld返回</p>
+
+<p>此时终止<code>supervisor express-helloworld.js</code>,使用<code>ctrl + c</code>终止。</p>
+
+<p>然后使用node-inspect调试</p>
+<div class="highlight"><pre><span class="err">➜</span><span class="w">  </span><span class="vg">node</span><span class="o">-</span><span class="vg">debug</span><span class="o">-</span><span class="vg">tutorial</span><span class="w"> </span><span class="nl">git:</span><span class="p">(</span><span class="vg">master</span><span class="p">)</span><span class="w"> </span><span class="err">✗</span><span class="w"> </span><span class="vg">node</span><span class="o">-</span><span class="vg">debug</span><span class="w"> </span><span class="vg">express</span><span class="o">-</span><span class="vg">helloworld</span><span class="o">.</span><span class="vg">js</span><span class="w"> </span>
+<span class="vg">Node</span><span class="w"> </span><span class="vg">Inspector</span><span class="w"> </span><span class="vg">is</span><span class="w"> </span><span class="vg">now</span><span class="w"> </span><span class="vg">available</span><span class="w"> </span><span class="vg">from</span><span class="w"> </span><span class="nl">http:</span><span class="o">//</span><span class="nl">localhost:</span><span class="il">8080</span><span class="o">/</span><span class="vg">debug</span><span class="o">?</span><span class="vg">port</span><span class="o">=</span><span class="il">5858</span>
+<span class="vg">Debugging</span><span class="w"> </span><span class="err">`</span><span class="vg">express</span><span class="o">-</span><span class="vg">helloworld</span><span class="o">.</span><span class="vg">js</span><span class="err">`</span>
+
+<span class="vg">debugger</span><span class="w"> </span><span class="vg">listening</span><span class="w"> </span><span class="vg">on</span><span class="w"> </span><span class="vg">port</span><span class="w"> </span><span class="il">5858</span>
+</pre></div>
+<p>增加断点</p>
+
+<p><img src="img/breakpoint.png" alt=""></p>
+
+<p>使用curl来模拟get请求，增加一个参数test，便于一会的debug</p>
+<div class="highlight"><pre><span class="vg">curl</span><span class="w"> </span><span class="o">-</span><span class="vg">G</span><span class="w"> </span><span class="o">-</span><span class="vg">d</span><span class="w"> </span><span class="s2">&quot;test=string&quot;</span><span class="w"> </span><span class="nl">http:</span><span class="o">//</span><span class="mf">127.0.0.1</span><span class="o">:</span><span class="il">5008</span><span class="o">/</span>
+</pre></div>
+<p>此时浏览器页面会停在断点处，在console里输入<code>req.query</code>即可以查到参数</p>
+
+<p><img src="img/express-debug.png" alt=""></p>
+
+<h2>测试驱动开发</h2>
+
+<ul>
+<li>tdd</li>
+<li>bdd</li>
+<li>代码覆盖率</li>
+</ul>
+
+<h3>测试框架</h3>
+
+<ul>
+<li>nodeunit</li>
+<li>mocha</li>
+</ul>
+
+<h3>更多测试</h3>
+<div class="highlight"><pre><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">chai</span>
+<span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">sinon</span>
+<span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">supertest</span>
+<span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">zombie</span>
+</pre></div>
+<h3>代码覆盖率</h3>
+
+<p>修改Gulpfile.js</p>
+
+<ul>
+<li>auto test</li>
+<li>代码测试覆盖率</li>
+</ul>
+<div class="highlight"><pre><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">gulp</span>
+<span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">gulp</span><span class="o">-</span><span class="vg">mocha</span>
+<span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">gulp</span><span class="o">-</span><span class="vg">istanbul</span>
+</pre></div>
+<p>创建gulpfilejs</p>
+<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">gulp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;gulp&#39;);</span>
+<span class="vg">var</span><span class="w"> </span><span class="vg">istanbul</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;gulp-istanbul&#39;);</span>
+<span class="vg">var</span><span class="w"> </span><span class="vg">mocha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;gulp-mocha&#39;); </span>
+
+<span class="vg">gulp</span><span class="o">.</span><span class="vg">task</span><span class="p">(</span><span class="c1">&#39;test&#39;, function (cb) {</span>
+<span class="w">  </span><span class="vg">gulp</span><span class="o">.</span><span class="vg">src</span><span class="p">([</span><span class="c1">&#39;db/**/*.js&#39;])</span>
+<span class="w">    </span><span class="o">.</span><span class="vg">pipe</span><span class="p">(</span><span class="vg">istanbul</span><span class="p">())</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="vg">Covering</span><span class="w"> </span><span class="vg">files</span>
+<span class="w">    </span><span class="o">.</span><span class="vg">on</span><span class="p">(</span><span class="c1">&#39;finish&#39;, function () {</span>
+<span class="w">      </span><span class="vg">gulp</span><span class="o">.</span><span class="vg">src</span><span class="p">([</span><span class="c1">&#39;test/*.js&#39;])</span>
+<span class="w">        </span><span class="o">.</span><span class="vg">pipe</span><span class="p">(</span><span class="vg">mocha</span><span class="p">())</span>
+<span class="w">        </span><span class="o">.</span><span class="vg">pipe</span><span class="p">(</span><span class="vg">istanbul</span><span class="o">.</span><span class="vg">writeReports</span><span class="p">())</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="vg">Creating</span><span class="w"> </span><span class="vg">the</span><span class="w"> </span><span class="vg">reports</span><span class="w"> </span><span class="vg">after</span><span class="w"> </span><span class="vg">tests</span><span class="w"> </span><span class="vg">runned</span>
+<span class="w">        </span><span class="o">.</span><span class="vg">on</span><span class="p">(</span><span class="c1">&#39;end&#39;, cb);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+
+<span class="vg">gulp</span><span class="o">.</span><span class="vg">task</span><span class="p">(</span><span class="c1">&#39;default&#39;,[&#39;test&#39;], function() {</span>
+<span class="w">  </span><span class="vg">gulp</span><span class="o">.</span><span class="vg">watch</span><span class="p">([</span><span class="c1">&#39;./db/**/*&#39;,&#39;./test/**/*&#39;], [&#39;test&#39;]);</span>
+<span class="p">});</span>
+
+<span class="vg">gulp</span><span class="o">.</span><span class="vg">task</span><span class="p">(</span><span class="c1">&#39;watch&#39;,[&#39;test&#39;], function() {</span>
+<span class="w">  </span><span class="vg">gulp</span><span class="o">.</span><span class="vg">watch</span><span class="p">([</span><span class="c1">&#39;./db/**/*&#39;,&#39;./test/**/*&#39;], [&#39;test&#39;]);</span>
+<span class="p">});</span>
+</pre></div>
+<p>测试</p>
+
+<p>node_modules/.bin/gulp 
+这时，你试试修改测试或源文件试试，看看会不会自动触发测试</p>
+
+<p>当然，如果你喜欢只是测试一次，可以这样做</p>
+
+<p>node_modules/.bin/gulp test 
+如果你不熟悉gulp，可以再这里https://github.com/i5ting/js-tools-best-practice/blob/master/doc/Gulp.md学习</p>
+
+<p>修改package.json</p>
+
+<p>&quot;scripts&quot;: {
+    &quot;start&quot;: &quot;./node_modules/.bin/supervisor ./bin/www&quot;,
+    &quot;test&quot;: &quot;./node_modules/.bin/mocha -u tdd&quot;
+  },</p>
+
+<h2>资源</h2>
+
+<ul>
+<li><a href="http://nodejs.org/api/debugger.html">debugger官方文档</a></li>
+<li><p><a href="https://github.com/node-inspector/node-inspector">node-inspector仓库地址</a></p></li>
+<li><p><a href="https://github.com/caolan/nodeunit">nodeunit</a></p></li>
+<li><p><a href="https://github.com/mochajs/mocha">mocha</a></p></li>
+<li><p>https://github.com/baryon/tracer</p></li>
+<li><p>http://www.habdas.org/node-js-debugging-primer/</p></li>
+<li><p>https://github.com/visionmedia/mocha</p></li>
+<li><p>http://visionmedia.github.io/mocha/</p></li>
+<li><p>http://mochajs.org/</p></li>
+<li><p>https://github.com/chaijs/chai</p></li>
+<li><p>http://chaijs.com/</p></li>
+<li><p>http://sinonjs.org/</p></li>
+<li><p>http://zombie.labnotes.org/</p></li>
+<li><p>https://github.com/tj/supertest（api test文档）</p></li>
+<li><p>https://github.com/tj/superagent/blob/master/test/node/agency.js（api test示例）</p></li>
+<li><p>https://github.com/i5ting/js-tools-best-practice/blob/master/doc/Gulp.md</p></li>
+<li><p>https://github.com/SBoudrias/gulp-istanbul</p></li>
+</ul>
+
+			          	</article>
+			        </div>
+					</div>
+	      </body>
+	    </html>
+			<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+			<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+			<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+      <script type="text/javascript" src="toc/toc_conf.js"></script>
+      
+			<SCRIPT type="text/javascript" >
+			<!--
+			$(document).ready(function(){
+          var css_conf = eval(markdown_panel_style);
+          $('#readme').css(css_conf)
+          
+          var conf = eval(jquery_ztree_toc_opts);
+  				$('#tree').ztree_toc(conf);
+
+				
+			});
+			//-->
+			</SCRIPT>
+	  
