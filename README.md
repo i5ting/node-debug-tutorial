@@ -1,13 +1,18 @@
 node-debug tutorial
 ===================
 
+大家对nodejs调试应该都比较头疼，至少我这个不用IDE写js的人很头疼这个，其实node的生态圈非常好
+有非常好的工具和非常潮的开发方式
+
+这里总结了3法3例，希望能对大家有所帮助 
+
 3种方法
 
 - node debugger
 - node inspector
 - 测试驱动开发
 
-调试使用3个例子
+3个例子
 
 - hello world
 - 继承例子
