@@ -221,7 +221,7 @@ node-inspector是通过websocket方式来转向debug输入输出的。因此，�
 
 增加断点
 
-![](breakpoint.png)
+![](img/breakpoint.png)
 
 使用curl来模拟get请求，增加一个参数test，便于一会的debug
 
@@ -230,7 +230,7 @@ curl -G -d "test=string" http://127.0.0.1:5008/
 ```
 此时浏览器页面会停在断点处，在console里输入`req.query`即可以查到参数
 
-![](express-debug.png)
+![](img/express-debug.png)
 
 
 
