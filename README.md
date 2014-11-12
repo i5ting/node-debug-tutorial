@@ -23,6 +23,7 @@ node-debug tutorial
 V8 提供了一个强大的调试器，可以通过 TCP 协议从外部访问。Nodejs提供了一个内建调试器来帮助开发者调试应用程序。想要开启调试器我们需要在代码中加入debugger标签，当Nodejs执行到debugger标签时会自动暂停（debugger标签相当于在代码中开启一个断点）。
 
 ### hello world例子
+
 代码如下：
 
 see `helloword-debug.js`
@@ -62,15 +63,14 @@ debug> repl
 Press Ctrl + C to leave debug repl
 > hello
 'hello'
-
 ```
+
 此时repl打开js上下文即时求值环境，和chrome的debug的console是一样的。
 
 
 如果想退出，请按下`ctrl + c`,这样就可以返 到debug模式
 
 ```
-
 debug> n
 break in helloword-debug.js:4
   2 var world = 'nodejs';
@@ -97,7 +97,7 @@ Press Ctrl + C to leave debug repl
 > hello_world
 'hello nodejs'
 > 
-
+end
 ```
 
 如果想终止调试，请按下2次`ctrl + c`键
@@ -179,14 +179,14 @@ node-inspector是通过websocket方式来转向debug输入输出的。因此，�
 
 	node-debug app.js
 
-控制台会返回“debugger listening on port 5858”， 现在打开浏览嚣，访问http://localhost:8080，这时候就会打开一个很像Chrome内置调试工具的界面，并且代码断点在第一行，下面就可以使用这个来调试了。
+控制台会返回“debugger listening on port 5858”， 现在打开浏览嚣，访问http://localhost:8080/debug?port=5858，这时候就会打开一个很像Chrome内置调试工具的界面，并且代码断点在第一行，下面就可以使用这个来调试了。
 
 常用调试功能
 
 - 增加断点，查看调用栈，变量等
 - 使用console打印查看日志
 
-使用方法和chrome的inspect element调试web开发是一样的。
+使用方法和`chrome`的`inspect element`调试web开发是一样的。
 
 调试还是很方便的，而且可以远程调试。其实原理很简单，它启动的是一个web server，我们要做的就是把localhost换成对应ip即可，要注意服务器的防火墙哦。
 
