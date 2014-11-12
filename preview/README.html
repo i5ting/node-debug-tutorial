@@ -133,6 +133,11 @@
 .highlight .il { color: #40a070 } /* Literal.Number.Integer.Long */</style>
 <h1>node-debug tutorial</h1>
 
+<p>大家对nodejs调试应该都比较头疼，至少我这个不用IDE写js的人很头疼这个，其实node的生态圈非常好
+有非常好的工具和非常潮的开发方式</p>
+
+<p>这里总结了3法3例，希望能对大家有所帮助 </p>
+
 <p>3种方法</p>
 
 <ul>
@@ -141,7 +146,7 @@
 <li>测试驱动开发</li>
 </ul>
 
-<p>调试使用3个例子</p>
+<p>3个例子</p>
 
 <ul>
 <li>hello world</li>
@@ -220,6 +225,7 @@
 <span class="o">&gt;</span><span class="w"> </span><span class="vg">hello_world</span>
 <span class="c1">&#39;hello nodejs&#39;</span>
 <span class="o">&gt;</span><span class="w"> </span>
+<span class="vg">end</span>
 </pre></div>
 <p>如果想终止调试，请按下2次<code>ctrl + c</code>键</p>
 
@@ -358,7 +364,7 @@
 <p>或者</p>
 <div class="highlight"><pre><span class="vg">node</span><span class="o">-</span><span class="vg">debug</span><span class="w"> </span><span class="vg">app</span><span class="o">.</span><span class="vg">js</span>
 </pre></div>
-<p>控制台会返回“debugger listening on port 5858”， 现在打开浏览嚣，访问http://localhost:8080，这时候就会打开一个很像Chrome内置调试工具的界面，并且代码断点在第一行，下面就可以使用这个来调试了。</p>
+<p>控制台会返回“debugger listening on port 5858”， 现在打开浏览嚣，访问http://localhost:8080/debug?port=5858，这时候就会打开一个很像Chrome内置调试工具的界面，并且代码断点在第一行，下面就可以使用这个来调试了。</p>
 
 <p>常用调试功能</p>
 
@@ -367,7 +373,7 @@
 <li>使用console打印查看日志</li>
 </ul>
 
-<p>使用方法和chrome的inspect element调试web开发是一样的。</p>
+<p>使用方法和<code>chrome</code>的<code>inspect element</code>调试web开发是一样的。</p>
 
 <p>调试还是很方便的，而且可以远程调试。其实原理很简单，它启动的是一个web server，我们要做的就是把localhost换成对应ip即可，要注意服务器的防火墙哦。</p>
 
