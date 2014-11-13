@@ -142,7 +142,11 @@ end
 
 化用一下更容易理解
 
-文档: http://nodejs.org/api/debugger.html
+[node debugger官方文档](http://nodejs.org/api/debugger.html)
+
+![](img/debugger-doc.png)
+
+上面有更多的例子和api，有了上面的基础，学习会非常简单。
 
 ### FAQ
 
