@@ -29,7 +29,7 @@ gulp.task('generate', function() {
     source_file: 'README.md',
     is_open: true,
     markd_config: {
-        debug: false
+      debug: false
     }
 	}
 	
