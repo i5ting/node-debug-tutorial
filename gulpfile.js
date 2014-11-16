@@ -3,7 +3,7 @@
 // npm install --save gulp-open
 // npm install --save gulp-rename
 // npm install --save gulp-i5ting-toc
-// shelljs
+// npm install --save shelljs
 var gulp = require('gulp');
 var gp_deploy = require('gulp-gh-pages');
 var open = require("gulp-open");
@@ -24,21 +24,13 @@ gulp.task('rename',function () {
 	}	
 });
 
-// gulp.task('generate',function () {
-// 	// Run external tool synchronously
-// 	if (exec('sh ./generate.sh').code !== 0) {
-// 	  echo('Error: generate.sh exec failed');
-// 	  exit(1);
-// 	}
-// });
-
 gulp.task('generate', function() {
 	var opt = {
-	    source_file: 'README.md',
-	    is_open: true,
-	    markd_config: {
-	        debug: false
-	    }
+    source_file: 'README.md',
+    is_open: true,
+    markd_config: {
+        debug: false
+    }
 	}
 	
 	gulp.src('README.md')
@@ -46,5 +38,5 @@ gulp.task('generate', function() {
 });
 
 gulp.task('default',['generate', 'rename', 'deploy'] ,function () {
-    console.log('default');
+  console.log('default');
 });
