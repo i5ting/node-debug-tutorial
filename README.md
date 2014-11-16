@@ -196,6 +196,47 @@ node-inspector是通过websocket方式来转向debug输入输出的。因此，�
 
 ### 测试extend.js
 
+测试一下继承是否ok，首先执行命令，打印出结果，但这种办法才挫了
+
+```
+➜  node-debug-tutorial git:(master) node extend.js 
+node debug
+hello node debug
+```
+
+
+开始使用node-inspector调试
+
+#### 启动
+
+```
+➜  node-debug-tutorial git:(master) node-debug  extend.js
+Node Inspector is now available from http://localhost:8080/debug?port=5858
+Debugging `extend.js`
+
+debugger listening on port 5858
+```
+
+#### 界面说明
+
+![](img/inspector-ui.png)
+
+#### 增加断点，并打印出this
+
+![](img/extend-before.png)
+
+#### 断点下一步，并打印出this
+
+![](img/extend-after.png)
+
+#### 结论
+
+通过
+
+	base.call(this);
+	
+这行代码，明显看到test对象的this被改变了，即使test拥有了base的所有属性和方法，这是最简单的实现继承的方法，当然多重继承mixin也可以是这样的原理
+
 
 ### 测试express helloworld
 
