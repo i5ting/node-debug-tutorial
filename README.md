@@ -221,6 +221,33 @@ debugger listening on port 5858
 
 ![](img/inspector-ui.png)
 
+
+mac系统大部分人都记不住这些按键，下面给出说明
+
+| Symbol    | Key         | 
+|:---------:|:-----------:|
+|  &#8984;  | Command Key |
+|  &#8963;  | Control Key |
+|  &#8997;  | Option Key  |
+|  &#8679;  | Shift Key   |
+
+
+断点操作
+
+- resume script execution（F8）
+	挂起断点，也可以理解为放弃当前断点，如果有下一个断点，会自动断住得
+- step over（F10）
+	跳过这行，到下一行，如果当前函数结束，会跳到调用栈的上一级的下一行
+- step into（F11）
+	进入当前行代码里的函数内部
+- step out（Shift + F11）
+	从当前函数退出到之前进入的代码处
+
+
+控制台操作
+
+- 不能使用var，直接打印变量杰克
+
 #### 增加断点，并打印出this
 
 ![](img/extend-before.png)

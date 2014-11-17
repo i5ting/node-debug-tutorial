@@ -18,6 +18,7 @@ gulp.task('deploy', function () {
 });
 
 gulp.task('rename',function () {
+	cp('-R', 'img', './preview/');
 	if (exec('cp ./preview/README.html ./preview/index.html').code !== 0) {
 	  echo('Error: rename exec failed');
 	  exit(1);
