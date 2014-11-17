@@ -288,6 +288,48 @@ Debugging `extend.js`
 debugger listening on port 5858
 </code></pre><h4 id="-">界面说明</h4>
 <p><img src="img/inspector-ui.png" alt=""></p>
+<p>mac系统大部分人都记不住这些按键，下面给出说明</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Symbol</th>
+<th style="text-align:center">Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&#8984;</td>
+<td style="text-align:center">Command Key</td>
+</tr>
+<tr>
+<td style="text-align:center">&#8963;</td>
+<td style="text-align:center">Control Key</td>
+</tr>
+<tr>
+<td style="text-align:center">&#8997;</td>
+<td style="text-align:center">Option Key</td>
+</tr>
+<tr>
+<td style="text-align:center">&#8679;</td>
+<td style="text-align:center">Shift Key</td>
+</tr>
+</tbody>
+</table>
+<p>断点操作</p>
+<ul>
+<li>resume script execution（F8）
+  挂起断点，也可以理解为放弃当前断点，如果有下一个断点，会自动断住得</li>
+<li>step over（F10）
+  跳过这行，到下一行，如果当前函数结束，会跳到调用栈的上一级的下一行</li>
+<li>step into（F11）
+  进入当前行代码里的函数内部</li>
+<li>step out（Shift + F11）
+  从当前函数退出到之前进入的代码处</li>
+</ul>
+<p>控制台操作</p>
+<ul>
+<li>不能使用var，直接打印变量杰克</li>
+</ul>
 <h4 id="-this">增加断点，并打印出this</h4>
 <p><img src="img/extend-before.png" alt=""></p>
 <h4 id="-this">断点下一步，并打印出this</h4>
