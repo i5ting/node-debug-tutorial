@@ -6,7 +6,7 @@ node-debug tutorial
 
 这里总结了3法3例，希望能对大家有所帮助 
 
-变成3中境界
+变成3种境界
 
 - 打日志
 - 断点调试 
@@ -24,12 +24,14 @@ node-debug tutorial
 - 继承例子
 - express helloworld
 
-2个模式
+2种模式
 
 - Launch Program
 - Attach to Process
 
 # 打日志
+
+了解console上的方法，比如dir等
 
 # 断点调试
 
@@ -464,7 +466,7 @@ node_modules/.bin/gulp test
 - https://github.com/i5ting/js-tools-best-practice/blob/master/doc/Gulp.md
 - https://github.com/SBoudrias/gulp-istanbul
 
-# 2个模式
+# 2种模式
 
 ## Launch Program
 
@@ -484,3 +486,4 @@ Debugger listening on 127.0.0.1:5858
 这样就启动了debugger，然后你就可以在vscode或者node inspector里attach里
 
 ![Attach](img/attach.png)
+
