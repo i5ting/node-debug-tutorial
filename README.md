@@ -6,10 +6,16 @@ node-debug tutorial
 
 这里总结了3法3例，希望能对大家有所帮助 
 
+变成3中境界
+
+- 打日志
+- 断点调试 
+- 测试驱动开发（tdd | bdd）
+
 3种方法
 
-- node debugger
-- node inspector
+- console.log
+- 断点调试：node debugger 或node inspector 或vscode
 - 测试驱动开发
 
 3个例子
@@ -17,6 +23,15 @@ node-debug tutorial
 - hello world
 - 继承例子
 - express helloworld
+
+2个模式
+
+- Launch Program
+- Attach to Process
+
+# 打日志
+
+# 断点调试
 
 ## node debug
 
@@ -318,8 +333,38 @@ curl -G -d "test=string" http://127.0.0.1:5008/
 ![](img/express-debug.png)
 
 
+## vscode
 
-## 测试驱动开发
+为什么选用vsc，一个原因就是因为调试
+
+- node-inspector虽好，项目已大特别慢，这方面vsc做了不少优化
+- tdd/bdd虽好，还不能完全实现
+
+vsc官方说
+
+```
+We improved stepping performance by loading the scopes and variables 
+of stack frames lazily. This improvement is based on a protocol change
+that affects all debug adapters.
+```
+
+意思就是他们做了很多优化
+
+使用中，确实比node-inspector快很多
+
+vsc调试使用方法也很简单,步骤如下：
+
+- 打开要调试的文件，按f5,编辑器会生成一个launch.json
+- 修改launch.json相关内容，主要是name和program字段，改成和你项目对应的
+- 点击编辑器左侧长得像蜘蛛的那个按钮
+- 点击左上角DEBUG后面的按钮，启动调试
+- 打断点，尽情调试（只要你会chrome调试，一模一样）
+
+![2](img/2.gif)
+
+更多示例，参见https://github.com/i5ting/vsc
+
+# 测试驱动开发
 
 - tdd
 - bdd
@@ -329,6 +374,8 @@ curl -G -d "test=string" http://127.0.0.1:5008/
 
 - nodeunit
 - mocha
+- ava
+- jest
 
 ### 更多测试
 
@@ -416,3 +463,24 @@ node_modules/.bin/gulp test
 - https://github.com/tj/superagent/blob/master/test/node/agency.js（api test示例）
 - https://github.com/i5ting/js-tools-best-practice/blob/master/doc/Gulp.md
 - https://github.com/SBoudrias/gulp-istanbul
+
+# 2个模式
+
+## Launch Program
+
+简单说，就是直接执行
+
+## Attach to Process
+
+简单说，是调试某个已启动的线程
+
+比如，我在终端里，node --debug启动了某个程序，
+
+```
+node --debug app.js
+Debugger listening on 127.0.0.1:5858
+```
+
+这样就启动了debugger，然后你就可以在vscode或者node inspector里attach里
+
+![Attach](img/attach.png)
