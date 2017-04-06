@@ -26,8 +26,8 @@ node-debug tutorial
 
 2种模式
 
-- Launch Program
-- Attach to Process
+- 本地调试Launch Program
+- 远程调试Attach to Process
 
 # 打日志
 
@@ -474,11 +474,11 @@ node_modules/.bin/gulp test
 
 # 2种模式
 
-## Launch Program
+## 本地调试Launch Program
 
 简单说，就是直接执行，上文最简单的断点调试都属于这种模式
 
-## Attach to Process
+## 远程调试Attach to Process
 
 简单说，是调试某个已启动的线程
 
