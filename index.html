@@ -74,8 +74,10 @@
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #007020; font-weight: bold } /* Keyword */
 .highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #60a0b0; font-style: italic } /* Comment.Hashbang */
 .highlight .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
 .highlight .cp { color: #007020 } /* Comment.Preproc */
+.highlight .cpf { color: #60a0b0; font-style: italic } /* Comment.PreprocFile */
 .highlight .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
 .highlight .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
 .highlight .gd { color: #A00000 } /* Generic.Deleted */
@@ -115,8 +117,10 @@
 .highlight .mh { color: #40a070 } /* Literal.Number.Hex */
 .highlight .mi { color: #40a070 } /* Literal.Number.Integer */
 .highlight .mo { color: #40a070 } /* Literal.Number.Oct */
+.highlight .sa { color: #4070a0 } /* Literal.String.Affix */
 .highlight .sb { color: #4070a0 } /* Literal.String.Backtick */
 .highlight .sc { color: #4070a0 } /* Literal.String.Char */
+.highlight .dl { color: #4070a0 } /* Literal.String.Delimiter */
 .highlight .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #4070a0 } /* Literal.String.Double */
 .highlight .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
@@ -127,9 +131,11 @@
 .highlight .s1 { color: #4070a0 } /* Literal.String.Single */
 .highlight .ss { color: #517918 } /* Literal.String.Symbol */
 .highlight .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #06287e } /* Name.Function.Magic */
 .highlight .vc { color: #bb60d5 } /* Name.Variable.Class */
 .highlight .vg { color: #bb60d5 } /* Name.Variable.Global */
 .highlight .vi { color: #bb60d5 } /* Name.Variable.Instance */
+.highlight .vm { color: #bb60d5 } /* Name.Variable.Magic */
 .highlight .il { color: #40a070 } /* Literal.Number.Integer.Long */</style>
 <h1>node-debug tutorial</h1>
 
@@ -165,8 +171,8 @@
 <p>2种模式</p>
 
 <ul>
-<li>Launch Program</li>
-<li>Attach to Process</li>
+<li>本地调试Launch Program</li>
+<li>远程调试Attach to Process</li>
 </ul>
 
 <h1>打日志</h1>
@@ -188,69 +194,69 @@
 <p>代码如下：</p>
 
 <p>see <code>helloword-debug.js</code></p>
-<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">hello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;hello&#39;;</span>
-<span class="vg">var</span><span class="w"> </span><span class="vg">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;nodejs&#39;;</span>
+<div class="highlight"><pre><span></span>var hello = &#39;hello&#39;;
+var world = &#39;nodejs&#39;;
 
-<span class="vg">debugger</span><span class="p">;</span>
+debugger;
 
-<span class="vg">var</span><span class="w"> </span><span class="vg">hello_world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">hello</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1">&#39; &#39; + world;</span>
-<span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">hello_world</span><span class="p">);</span>
+var hello_world = hello + &#39; &#39; + world;
+console.log(hello_world);
 </pre></div>
 <p>执行命令：<code>node debug helloword-debug.js</code> 就可以进入调试模式。</p>
 
 <p>当然，首先需要在程序代码中手动添加中断debugger; ， 这样当以调试模式运行时，程序会自动中断，然后等候你调试，就像GDB一样，可以用help命令查看自己都可以使用哪些调试命令。</p>
-<div class="highlight"><pre><span class="vg">node</span><span class="o">-</span><span class="vg">debug</span><span class="o">-</span><span class="vg">tutorial</span><span class="w"> </span><span class="nl">git:</span><span class="p">(</span><span class="vg">master</span><span class="p">)</span><span class="w"> </span><span class="err">✗</span><span class="w"> </span><span class="vg">node</span><span class="w"> </span><span class="vg">debug</span><span class="w"> </span><span class="vg">helloword</span><span class="o">-</span><span class="vg">debug</span><span class="o">.</span><span class="vg">js</span>
-<span class="o">&lt;</span><span class="w"> </span><span class="vg">debugger</span><span class="w"> </span><span class="vg">listening</span><span class="w"> </span><span class="vg">on</span><span class="w"> </span><span class="vg">port</span><span class="w"> </span><span class="il">5858</span>
-<span class="vg">connecting</span><span class="o">...</span><span class="w"> </span><span class="vg">ok</span>
-<span class="vg">break</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="vg">helloword</span><span class="o">-</span><span class="vg">debug</span><span class="o">.</span><span class="nl">js:</span><span class="il">1</span>
-<span class="w">  </span><span class="il">1</span><span class="w"> </span><span class="vg">var</span><span class="w"> </span><span class="vg">hello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;hello&#39;;</span>
-<span class="w">  </span><span class="il">2</span><span class="w"> </span><span class="vg">var</span><span class="w"> </span><span class="vg">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;nodejs&#39;;</span>
-<span class="w">  </span><span class="il">3</span><span class="w"> </span>
-<span class="vg">debug</span><span class="o">&gt;</span><span class="w"> </span><span class="vg">help</span>
-<span class="nl">Commands:</span><span class="w"> </span><span class="vg">run</span><span class="w"> </span><span class="p">(</span><span class="vg">r</span><span class="p">),</span><span class="w"> </span><span class="vg">cont</span><span class="w"> </span><span class="p">(</span><span class="vg">c</span><span class="p">),</span><span class="w"> </span><span class="vg">next</span><span class="w"> </span><span class="p">(</span><span class="vg">n</span><span class="p">),</span><span class="w"> </span><span class="vg">step</span><span class="w"> </span><span class="p">(</span><span class="vg">s</span><span class="p">),</span><span class="w"> </span><span class="vg">out</span><span class="w"> </span><span class="p">(</span><span class="vg">o</span><span class="p">),</span><span class="w"> </span><span class="vg">backtrace</span><span class="w"> </span><span class="p">(</span><span class="vg">bt</span><span class="p">),</span><span class="w"> </span><span class="vg">setBreakpoint</span><span class="w"> </span><span class="p">(</span><span class="vg">sb</span><span class="p">),</span><span class="w"> </span><span class="vg">clearBreakpoint</span><span class="w"> </span><span class="p">(</span><span class="vg">cb</span><span class="p">),</span>
-<span class="vg">watch</span><span class="p">,</span><span class="w"> </span><span class="vg">unwatch</span><span class="p">,</span><span class="w"> </span><span class="vg">watchers</span><span class="p">,</span><span class="w"> </span><span class="vg">repl</span><span class="p">,</span><span class="w"> </span><span class="vg">restart</span><span class="p">,</span><span class="w"> </span><span class="vg">kill</span><span class="p">,</span><span class="w"> </span><span class="vg">list</span><span class="p">,</span><span class="w"> </span><span class="vg">scripts</span><span class="p">,</span><span class="w"> </span><span class="vg">breakOnException</span><span class="p">,</span><span class="w"> </span><span class="vg">breakpoints</span><span class="p">,</span><span class="w"> </span><span class="vg">version</span>
-<span class="vg">debug</span><span class="o">&gt;</span><span class="w"> </span>
-<span class="vg">debug</span><span class="o">&gt;</span><span class="w"> </span><span class="vg">n</span>
-<span class="vg">break</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="vg">helloword</span><span class="o">-</span><span class="vg">debug</span><span class="o">.</span><span class="nl">js:</span><span class="il">2</span>
-<span class="w">  </span><span class="il">1</span><span class="w"> </span><span class="vg">var</span><span class="w"> </span><span class="vg">hello</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;hello&#39;;</span>
-<span class="w">  </span><span class="il">2</span><span class="w"> </span><span class="vg">var</span><span class="w"> </span><span class="vg">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;nodejs&#39;;</span>
-<span class="w">  </span><span class="il">3</span><span class="w"> </span>
-<span class="w">  </span><span class="il">4</span><span class="w"> </span><span class="vg">debugger</span><span class="p">;</span>
-<span class="vg">debug</span><span class="o">&gt;</span><span class="w"> </span><span class="vg">repl</span>
-<span class="vg">Press</span><span class="w"> </span><span class="vg">Ctrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="vg">C</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">leave</span><span class="w"> </span><span class="vg">debug</span><span class="w"> </span><span class="vg">repl</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="vg">hello</span>
-<span class="c1">&#39;hello&#39;</span>
+<div class="highlight"><pre><span></span>node-debug-tutorial git:(master) ✗ node debug helloword-debug.js
+&lt; debugger listening on port 5858
+connecting... ok
+break in helloword-debug.js:1
+  1 var hello = &#39;hello&#39;;
+  2 var world = &#39;nodejs&#39;;
+  3 
+debug&gt; help
+Commands: run (r), cont (c), next (n), step (s), out (o), backtrace (bt), setBreakpoint (sb), clearBreakpoint (cb),
+watch, unwatch, watchers, repl, restart, kill, list, scripts, breakOnException, breakpoints, version
+debug&gt; 
+debug&gt; n
+break in helloword-debug.js:2
+  1 var hello = &#39;hello&#39;;
+  2 var world = &#39;nodejs&#39;;
+  3 
+  4 debugger;
+debug&gt; repl
+Press Ctrl + C to leave debug repl
+&gt; hello
+&#39;hello&#39;
 </pre></div>
 <p>此时repl打开js上下文即时求值环境，和chrome的debug的console是一样的。</p>
 
 <p>如果想退出，请按下<code>ctrl + c</code>,这样就可以返 到debug模式</p>
-<div class="highlight"><pre><span class="vg">debug</span><span class="o">&gt;</span><span class="w"> </span><span class="vg">n</span>
-<span class="vg">break</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="vg">helloword</span><span class="o">-</span><span class="vg">debug</span><span class="o">.</span><span class="nl">js:</span><span class="il">4</span>
-<span class="w">  </span><span class="il">2</span><span class="w"> </span><span class="vg">var</span><span class="w"> </span><span class="vg">world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">&#39;nodejs&#39;;</span>
-<span class="w">  </span><span class="il">3</span><span class="w"> </span>
-<span class="w">  </span><span class="il">4</span><span class="w"> </span><span class="vg">debugger</span><span class="p">;</span>
-<span class="w">  </span><span class="il">5</span><span class="w"> </span>
-<span class="w">  </span><span class="il">6</span><span class="w"> </span><span class="vg">var</span><span class="w"> </span><span class="vg">hello_world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">hello</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1">&#39; &#39; + world;</span>
-<span class="vg">debug</span><span class="o">&gt;</span><span class="w"> </span><span class="vg">n</span>
-<span class="vg">break</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="vg">helloword</span><span class="o">-</span><span class="vg">debug</span><span class="o">.</span><span class="nl">js:</span><span class="il">6</span>
-<span class="w">  </span><span class="il">4</span><span class="w"> </span><span class="vg">debugger</span><span class="p">;</span>
-<span class="w">  </span><span class="il">5</span><span class="w"> </span>
-<span class="w">  </span><span class="il">6</span><span class="w"> </span><span class="vg">var</span><span class="w"> </span><span class="vg">hello_world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">hello</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1">&#39; &#39; + world;</span>
-<span class="w">  </span><span class="il">7</span><span class="w"> </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">hello_world</span><span class="p">);</span>
-<span class="w">  </span><span class="il">8</span><span class="w"> </span>
-<span class="vg">debug</span><span class="o">&gt;</span><span class="w"> </span><span class="vg">n</span>
-<span class="vg">break</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="vg">helloword</span><span class="o">-</span><span class="vg">debug</span><span class="o">.</span><span class="nl">js:</span><span class="il">7</span>
-<span class="w">  </span><span class="il">5</span><span class="w"> </span>
-<span class="w">  </span><span class="il">6</span><span class="w"> </span><span class="vg">var</span><span class="w"> </span><span class="vg">hello_world</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">hello</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="c1">&#39; &#39; + world;</span>
-<span class="w">  </span><span class="il">7</span><span class="w"> </span><span class="vg">console</span><span class="o">.</span><span class="vg">log</span><span class="p">(</span><span class="vg">hello_world</span><span class="p">);</span>
-<span class="w">  </span><span class="il">8</span><span class="w"> </span>
-<span class="w">  </span><span class="il">9</span><span class="w"> </span><span class="p">});</span>
-<span class="vg">debug</span><span class="o">&gt;</span><span class="w"> </span><span class="vg">repl</span>
-<span class="vg">Press</span><span class="w"> </span><span class="vg">Ctrl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="vg">C</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">leave</span><span class="w"> </span><span class="vg">debug</span><span class="w"> </span><span class="vg">repl</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="vg">hello_world</span>
-<span class="c1">&#39;hello nodejs&#39;</span>
-<span class="o">&gt;</span><span class="w"> </span>
-<span class="vg">end</span>
+<div class="highlight"><pre><span></span>debug&gt; n
+break in helloword-debug.js:4
+  2 var world = &#39;nodejs&#39;;
+  3 
+  4 debugger;
+  5 
+  6 var hello_world = hello + &#39; &#39; + world;
+debug&gt; n
+break in helloword-debug.js:6
+  4 debugger;
+  5 
+  6 var hello_world = hello + &#39; &#39; + world;
+  7 console.log(hello_world);
+  8 
+debug&gt; n
+break in helloword-debug.js:7
+  5 
+  6 var hello_world = hello + &#39; &#39; + world;
+  7 console.log(hello_world);
+  8 
+  9 });
+debug&gt; repl
+Press Ctrl + C to leave debug repl
+&gt; hello_world
+&#39;hello nodejs&#39;
+&gt; 
+end
 </pre></div>
 <p>如果想终止调试，请按下2次<code>ctrl + c</code>键</p>
 
@@ -368,10 +374,10 @@
 <h3>FAQ</h3>
 
 <p>注意,如果出现</p>
-<div class="highlight"><pre><span class="o">&lt;</span><span class="w"> </span><span class="vg">Failed</span><span class="w"> </span><span class="vg">to</span><span class="w"> </span><span class="vg">open</span><span class="w"> </span><span class="vg">socket</span><span class="w"> </span><span class="vg">on</span><span class="w"> </span><span class="vg">port</span><span class="w"> </span><span class="il">5858</span><span class="p">,</span><span class="w"> </span><span class="vg">waiting</span><span class="w"> </span><span class="il">1000</span><span class="w"> </span><span class="vg">ms</span><span class="w"> </span><span class="vg">before</span><span class="w"> </span><span class="vg">retrying</span>
+<div class="highlight"><pre><span></span>&lt; Failed to open socket on port 5858, waiting 1000 ms before retrying
 </pre></div>
 <p>请结束掉所有debug进程</p>
-<div class="highlight"><pre><span class="vg">ps</span><span class="w"> </span><span class="o">-</span><span class="vg">ef</span><span class="o">|</span><span class="vg">grep</span><span class="w"> </span><span class="vg">debug</span><span class="o">-</span><span class="vg">brk</span><span class="o">|</span><span class="vg">awk</span><span class="w"> </span><span class="c1">&#39;{print $2}&#39;|xargs kill -9</span>
+<div class="highlight"><pre><span></span>ps -ef|grep debug-brk|awk &#39;{print $2}&#39;|xargs kill -9
 </pre></div>
 <h2>node inspector</h2>
 
@@ -382,16 +388,16 @@
 <h3>安装</h3>
 
 <p>这个需要用npm来安装，只需要执行下列语句：</p>
-<div class="highlight"><pre><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">-</span><span class="vg">g</span><span class="w"> </span><span class="vg">node</span><span class="o">-</span><span class="vg">inspector</span>
+<div class="highlight"><pre><span></span>npm install -g node-inspector
 </pre></div>
 <p>安装完成之后，通常可以直接这样启动在后台：</p>
-<div class="highlight"><pre><span class="vg">node</span><span class="o">-</span><span class="vg">inspector</span><span class="w"> </span><span class="o">&amp;</span>
+<div class="highlight"><pre><span></span>node-inspector &amp;
 </pre></div>
 <p>默认会监听8080端口，当然，也可能通过使用--web-port参数来修改。然后，在执行node程序的时候，多加个参数：--debug-brk, 如下：</p>
-<div class="highlight"><pre><span class="vg">node</span><span class="w"> </span><span class="o">--</span><span class="vg">debug</span><span class="o">-</span><span class="vg">brk</span><span class="w"> </span><span class="vg">app</span><span class="o">.</span><span class="vg">js</span>
+<div class="highlight"><pre><span></span>node --debug-brk app.js
 </pre></div>
 <p>或者</p>
-<div class="highlight"><pre><span class="vg">node</span><span class="o">-</span><span class="vg">debug</span><span class="w"> </span><span class="vg">app</span><span class="o">.</span><span class="vg">js</span>
+<div class="highlight"><pre><span></span>node-debug app.js
 </pre></div>
 <p>控制台会返回“debugger listening on port 5858”， 现在打开浏览嚣，访问http://localhost:8080/debug?port=5858，这时候就会打开一个很像Chrome内置调试工具的界面，并且代码断点在第一行，下面就可以使用这个来调试了。</p>
 
@@ -409,18 +415,18 @@
 <h3>测试extend.js</h3>
 
 <p>测试一下继承是否ok，首先执行命令，打印出结果，但这种办法才挫了</p>
-<div class="highlight"><pre><span class="err">➜</span><span class="w">  </span><span class="vg">node</span><span class="o">-</span><span class="vg">debug</span><span class="o">-</span><span class="vg">tutorial</span><span class="w"> </span><span class="nl">git:</span><span class="p">(</span><span class="vg">master</span><span class="p">)</span><span class="w"> </span><span class="vg">node</span><span class="w"> </span><span class="vg">extend</span><span class="o">.</span><span class="vg">js</span><span class="w"> </span>
-<span class="vg">node</span><span class="w"> </span><span class="vg">debug</span>
-<span class="vg">hello</span><span class="w"> </span><span class="vg">node</span><span class="w"> </span><span class="vg">debug</span>
+<div class="highlight"><pre><span></span>➜  node-debug-tutorial git:(master) node extend.js 
+node debug
+hello node debug
 </pre></div>
 <p>开始使用node-inspector调试</p>
 
 <h4>启动</h4>
-<div class="highlight"><pre><span class="err">➜</span><span class="w">  </span><span class="vg">node</span><span class="o">-</span><span class="vg">debug</span><span class="o">-</span><span class="vg">tutorial</span><span class="w"> </span><span class="nl">git:</span><span class="p">(</span><span class="vg">master</span><span class="p">)</span><span class="w"> </span><span class="vg">node</span><span class="o">-</span><span class="vg">debug</span><span class="w">  </span><span class="vg">extend</span><span class="o">.</span><span class="vg">js</span>
-<span class="vg">Node</span><span class="w"> </span><span class="vg">Inspector</span><span class="w"> </span><span class="vg">is</span><span class="w"> </span><span class="vg">now</span><span class="w"> </span><span class="vg">available</span><span class="w"> </span><span class="vg">from</span><span class="w"> </span><span class="nl">http:</span><span class="o">//</span><span class="nl">localhost:</span><span class="il">8080</span><span class="o">/</span><span class="vg">debug</span><span class="o">?</span><span class="vg">port</span><span class="o">=</span><span class="il">5858</span>
-<span class="vg">Debugging</span><span class="w"> </span><span class="err">`</span><span class="vg">extend</span><span class="o">.</span><span class="vg">js</span><span class="err">`</span>
+<div class="highlight"><pre><span></span>➜  node-debug-tutorial git:(master) node-debug  extend.js
+Node Inspector is now available from http://localhost:8080/debug?port=5858
+Debugging `extend.js`
 
-<span class="vg">debugger</span><span class="w"> </span><span class="vg">listening</span><span class="w"> </span><span class="vg">on</span><span class="w"> </span><span class="vg">port</span><span class="w"> </span><span class="il">5858</span>
+debugger listening on port 5858
 </pre></div>
 <h4>界面说明</h4>
 
@@ -482,7 +488,7 @@
 <h4>结论</h4>
 
 <p>通过</p>
-<div class="highlight"><pre><span class="vg">base</span><span class="o">.</span><span class="vg">call</span><span class="p">(</span><span class="vg">this</span><span class="p">);</span>
+<div class="highlight"><pre><span></span>base.call(this);
 </pre></div>
 <p>这行代码，明显看到test对象的this被改变了，即使test拥有了base的所有属性和方法，这是最简单的实现继承的方法，当然多重继承mixin也可以是这样的原理</p>
 
@@ -491,41 +497,41 @@
 <p>这种测试一般都是看request里的params，query和body等</p>
 
 <p>准备工作</p>
-<div class="highlight"><pre><span class="vg">npm</span><span class="w"> </span><span class="vg">init</span><span class="w"> </span><span class="o">.</span>
-<span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="w"> </span><span class="vg">express</span>
-<span class="vg">touch</span><span class="w"> </span><span class="vg">express</span><span class="o">-</span><span class="vg">helloworld</span><span class="o">.</span><span class="vg">js</span>
+<div class="highlight"><pre><span></span>npm init .
+npm install --save express
+touch express-helloworld.js
 </pre></div>
 <p>测试express-helloworld.js代码</p>
-<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;express&#39;);</span>
-<span class="vg">var</span><span class="w"> </span><span class="vg">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">express</span><span class="p">();</span>
+<div class="highlight"><pre><span></span>var express = require(&#39;express&#39;);
+var app = express();
 
-<span class="vg">app</span><span class="o">.</span><span class="vg">get</span><span class="p">(</span><span class="c1">&#39;/&#39;,function(req,res){</span>
-<span class="w">    </span><span class="vg">res</span><span class="o">.</span><span class="vg">send</span><span class="p">(</span><span class="c1">&#39;hello,world&#39;);</span>
-<span class="p">});</span>
+app.get(&#39;/&#39;,function(req,res){
+    res.send(&#39;hello,world&#39;);
+});
 
-<span class="vg">app</span><span class="o">.</span><span class="vg">listen</span><span class="p">(</span><span class="il">5008</span><span class="p">);</span>
+app.listen(5008);
 </pre></div>
 <p>执行,安装服务器自动重载模块</p>
-<div class="highlight"><pre><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">-</span><span class="vg">g</span><span class="w"> </span><span class="vg">supervisor</span>
-<span class="vg">supervisor</span><span class="w"> </span><span class="vg">express</span><span class="o">-</span><span class="vg">helloworld</span><span class="o">.</span><span class="vg">js</span>
+<div class="highlight"><pre><span></span>npm install -g supervisor
+supervisor express-helloworld.js
 </pre></div>
 <p>打开浏览器访问http://127.0.0.1:5008/就会看到helloworld返回</p>
 
 <p>此时终止<code>supervisor express-helloworld.js</code>,使用<code>ctrl + c</code>终止。</p>
 
 <p>然后使用node-inspect调试</p>
-<div class="highlight"><pre><span class="err">➜</span><span class="w">  </span><span class="vg">node</span><span class="o">-</span><span class="vg">debug</span><span class="o">-</span><span class="vg">tutorial</span><span class="w"> </span><span class="nl">git:</span><span class="p">(</span><span class="vg">master</span><span class="p">)</span><span class="w"> </span><span class="err">✗</span><span class="w"> </span><span class="vg">node</span><span class="o">-</span><span class="vg">debug</span><span class="w"> </span><span class="vg">express</span><span class="o">-</span><span class="vg">helloworld</span><span class="o">.</span><span class="vg">js</span><span class="w"> </span>
-<span class="vg">Node</span><span class="w"> </span><span class="vg">Inspector</span><span class="w"> </span><span class="vg">is</span><span class="w"> </span><span class="vg">now</span><span class="w"> </span><span class="vg">available</span><span class="w"> </span><span class="vg">from</span><span class="w"> </span><span class="nl">http:</span><span class="o">//</span><span class="nl">localhost:</span><span class="il">8080</span><span class="o">/</span><span class="vg">debug</span><span class="o">?</span><span class="vg">port</span><span class="o">=</span><span class="il">5858</span>
-<span class="vg">Debugging</span><span class="w"> </span><span class="err">`</span><span class="vg">express</span><span class="o">-</span><span class="vg">helloworld</span><span class="o">.</span><span class="vg">js</span><span class="err">`</span>
+<div class="highlight"><pre><span></span>➜  node-debug-tutorial git:(master) ✗ node-debug express-helloworld.js 
+Node Inspector is now available from http://localhost:8080/debug?port=5858
+Debugging `express-helloworld.js`
 
-<span class="vg">debugger</span><span class="w"> </span><span class="vg">listening</span><span class="w"> </span><span class="vg">on</span><span class="w"> </span><span class="vg">port</span><span class="w"> </span><span class="il">5858</span>
+debugger listening on port 5858
 </pre></div>
 <p>增加断点</p>
 
 <p><img src="img/breakpoint.png" alt=""></p>
 
 <p>使用curl来模拟get请求，增加一个参数test，便于一会的debug</p>
-<div class="highlight"><pre><span class="vg">curl</span><span class="w"> </span><span class="o">-</span><span class="vg">G</span><span class="w"> </span><span class="o">-</span><span class="vg">d</span><span class="w"> </span><span class="s2">&quot;test=string&quot;</span><span class="w"> </span><span class="nl">http:</span><span class="o">//</span><span class="mf">127.0.0.1</span><span class="o">:</span><span class="il">5008</span><span class="o">/</span>
+<div class="highlight"><pre><span></span>curl -G -d &quot;test=string&quot; http://127.0.0.1:5008/
 </pre></div>
 <p>此时浏览器页面会停在断点处，在console里输入<code>req.query</code>即可以查到参数</p>
 
@@ -541,9 +547,9 @@
 </ul>
 
 <p>vsc官方说</p>
-<div class="highlight"><pre><span class="vg">We</span><span class="w"> </span><span class="vg">improved</span><span class="w"> </span><span class="vg">stepping</span><span class="w"> </span><span class="vg">performance</span><span class="w"> </span><span class="vg">by</span><span class="w"> </span><span class="vg">loading</span><span class="w"> </span><span class="vg">the</span><span class="w"> </span><span class="vg">scopes</span><span class="w"> </span><span class="vg">and</span><span class="w"> </span><span class="vg">variables</span><span class="w"> </span>
-<span class="vg">of</span><span class="w"> </span><span class="vg">stack</span><span class="w"> </span><span class="vg">frames</span><span class="w"> </span><span class="vg">lazily</span><span class="o">.</span><span class="w"> </span><span class="vg">This</span><span class="w"> </span><span class="vg">improvement</span><span class="w"> </span><span class="vg">is</span><span class="w"> </span><span class="vg">based</span><span class="w"> </span><span class="vg">on</span><span class="w"> </span><span class="vg">a</span><span class="w"> </span><span class="vg">protocol</span><span class="w"> </span><span class="vg">change</span>
-<span class="vg">that</span><span class="w"> </span><span class="vg">affects</span><span class="w"> </span><span class="vg">all</span><span class="w"> </span><span class="vg">debug</span><span class="w"> </span><span class="vg">adapters</span><span class="o">.</span>
+<div class="highlight"><pre><span></span>We improved stepping performance by loading the scopes and variables 
+of stack frames lazily. This improvement is based on a protocol change
+that affects all debug adapters.
 </pre></div>
 <p>意思就是他们做了很多优化</p>
 
@@ -583,10 +589,10 @@
 </ul>
 
 <h3>更多测试</h3>
-<div class="highlight"><pre><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">chai</span>
-<span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">sinon</span>
-<span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">supertest</span>
-<span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">zombie</span>
+<div class="highlight"><pre><span></span>npm install --save-dev chai
+npm install --save-dev sinon
+npm install --save-dev supertest
+npm install --save-dev zombie
 </pre></div>
 <h3>代码覆盖率</h3>
 
@@ -596,33 +602,33 @@
 <li>auto test</li>
 <li>代码测试覆盖率</li>
 </ul>
-<div class="highlight"><pre><span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">gulp</span>
-<span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">gulp</span><span class="o">-</span><span class="vg">mocha</span>
-<span class="vg">npm</span><span class="w"> </span><span class="vg">install</span><span class="w"> </span><span class="o">--</span><span class="vg">save</span><span class="o">-</span><span class="vg">dev</span><span class="w"> </span><span class="vg">gulp</span><span class="o">-</span><span class="vg">istanbul</span>
+<div class="highlight"><pre><span></span>npm install --save-dev gulp
+npm install --save-dev gulp-mocha
+npm install --save-dev gulp-istanbul
 </pre></div>
 <p>创建gulpfilejs</p>
-<div class="highlight"><pre><span class="vg">var</span><span class="w"> </span><span class="vg">gulp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;gulp&#39;);</span>
-<span class="vg">var</span><span class="w"> </span><span class="vg">istanbul</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;gulp-istanbul&#39;);</span>
-<span class="vg">var</span><span class="w"> </span><span class="vg">mocha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">require</span><span class="p">(</span><span class="c1">&#39;gulp-mocha&#39;); </span>
+<div class="highlight"><pre><span></span>var gulp = require(&#39;gulp&#39;);
+var istanbul = require(&#39;gulp-istanbul&#39;);
+var mocha = require(&#39;gulp-mocha&#39;); 
 
-<span class="vg">gulp</span><span class="o">.</span><span class="vg">task</span><span class="p">(</span><span class="c1">&#39;test&#39;, function (cb) {</span>
-<span class="w">  </span><span class="vg">gulp</span><span class="o">.</span><span class="vg">src</span><span class="p">([</span><span class="c1">&#39;db/**/*.js&#39;])</span>
-<span class="w">    </span><span class="o">.</span><span class="vg">pipe</span><span class="p">(</span><span class="vg">istanbul</span><span class="p">())</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="vg">Covering</span><span class="w"> </span><span class="vg">files</span>
-<span class="w">    </span><span class="o">.</span><span class="vg">on</span><span class="p">(</span><span class="c1">&#39;finish&#39;, function () {</span>
-<span class="w">      </span><span class="vg">gulp</span><span class="o">.</span><span class="vg">src</span><span class="p">([</span><span class="c1">&#39;test/*.js&#39;])</span>
-<span class="w">        </span><span class="o">.</span><span class="vg">pipe</span><span class="p">(</span><span class="vg">mocha</span><span class="p">())</span>
-<span class="w">        </span><span class="o">.</span><span class="vg">pipe</span><span class="p">(</span><span class="vg">istanbul</span><span class="o">.</span><span class="vg">writeReports</span><span class="p">())</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="vg">Creating</span><span class="w"> </span><span class="vg">the</span><span class="w"> </span><span class="vg">reports</span><span class="w"> </span><span class="vg">after</span><span class="w"> </span><span class="vg">tests</span><span class="w"> </span><span class="vg">runned</span>
-<span class="w">        </span><span class="o">.</span><span class="vg">on</span><span class="p">(</span><span class="c1">&#39;end&#39;, cb);</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="p">});</span>
+gulp.task(&#39;test&#39;, function (cb) {
+  gulp.src([&#39;db/**/*.js&#39;])
+    .pipe(istanbul()) // Covering files
+    .on(&#39;finish&#39;, function () {
+      gulp.src([&#39;test/*.js&#39;])
+        .pipe(mocha())
+        .pipe(istanbul.writeReports()) // Creating the reports after tests runned
+        .on(&#39;end&#39;, cb);
+    });
+});
 
-<span class="vg">gulp</span><span class="o">.</span><span class="vg">task</span><span class="p">(</span><span class="c1">&#39;default&#39;,[&#39;test&#39;], function() {</span>
-<span class="w">  </span><span class="vg">gulp</span><span class="o">.</span><span class="vg">watch</span><span class="p">([</span><span class="c1">&#39;./db/**/*&#39;,&#39;./test/**/*&#39;], [&#39;test&#39;]);</span>
-<span class="p">});</span>
+gulp.task(&#39;default&#39;,[&#39;test&#39;], function() {
+  gulp.watch([&#39;./db/**/*&#39;,&#39;./test/**/*&#39;], [&#39;test&#39;]);
+});
 
-<span class="vg">gulp</span><span class="o">.</span><span class="vg">task</span><span class="p">(</span><span class="c1">&#39;watch&#39;,[&#39;test&#39;], function() {</span>
-<span class="w">  </span><span class="vg">gulp</span><span class="o">.</span><span class="vg">watch</span><span class="p">([</span><span class="c1">&#39;./db/**/*&#39;,&#39;./test/**/*&#39;], [&#39;test&#39;]);</span>
-<span class="p">});</span>
+gulp.task(&#39;watch&#39;,[&#39;test&#39;], function() {
+  gulp.watch([&#39;./db/**/*&#39;,&#39;./test/**/*&#39;], [&#39;test&#39;]);
+});
 </pre></div>
 <p>测试</p>
 
@@ -665,17 +671,17 @@
 
 <h1>2种模式</h1>
 
-<h2>Launch Program</h2>
+<h2>本地调试Launch Program</h2>
 
 <p>简单说，就是直接执行，上文最简单的断点调试都属于这种模式</p>
 
-<h2>Attach to Process</h2>
+<h2>远程调试Attach to Process</h2>
 
 <p>简单说，是调试某个已启动的线程</p>
 
 <p>比如，我在终端里，node --debug启动了某个程序，</p>
-<div class="highlight"><pre><span class="vg">node</span><span class="w"> </span><span class="o">--</span><span class="vg">debug</span><span class="w"> </span><span class="vg">app</span><span class="o">.</span><span class="vg">js</span>
-<span class="vg">Debugger</span><span class="w"> </span><span class="vg">listening</span><span class="w"> </span><span class="vg">on</span><span class="w"> </span><span class="mf">127.0.0.1</span><span class="o">:</span><span class="il">5858</span>
+<div class="highlight"><pre><span></span>node --debug app.js
+Debugger listening on 127.0.0.1:5858
 </pre></div>
 <p>这样就启动了debugger，然后你就可以在vscode或者node inspector里attach里</p>
 
@@ -689,7 +695,7 @@
 			<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
 			<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
 			<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
-      <script type="text/javascript" src="toc/toc_conf.js"></script>
+      <script type="text/javascript" src="toc_conf.js"></script>
       
 			<SCRIPT type="text/javascript" >
 			<!--
