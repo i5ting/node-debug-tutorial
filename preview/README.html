@@ -674,7 +674,33 @@ Debugger listening on 127.0.0.1:5858
 <h2>举例</h2>
 
 <p><img src="img/node_debuggers_arch.png" alt="Node Debuggers Arch"></p>
+<div class="highlight"><pre><span></span>let vm = require(&#39;vm&#39;)
+let debug = vm.runInDebugContext(&#39;Debug&#39;)
 
+function test() {}
+
+debug.setListener((event, execState, eventData, data) =&gt; {
+    if (event != debug.DebugEvent.Break) return
+
+    var script   = eventData.func().script().name()
+    var line     = eventData.sourceLine()
+    var col      = eventData.sourceColumn()
+
+    var location = script + &quot;:&quot; + line + &quot;:&quot; + col
+
+    var funcName = eventData.func().name()
+    if (funcName != &quot;&quot;) {
+        location += &quot; &quot; + funcName + &quot;()&quot;
+    }
+
+    console.log(location)
+})
+
+debug.setBreakPoint(test, 0, 0)
+
+test()
+// /Users/sang/workspace/github/node-debug-tutorial/a.js:3:17 test()
+</pre></div>
 <h2>内置的Node.js Debugger</h2>
 
 <blockquote>

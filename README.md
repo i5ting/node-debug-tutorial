@@ -391,6 +391,237 @@ vsc调试使用方法也很简单,步骤如下：
 	npm install --save-dev sinon
 	npm install --save-dev supertest
 	npm install --save-dev zombie
+	
+### chai
+
+Should
+
+```
+chai.should();
+
+foo.should.be.a('string');
+foo.should.equal('bar');
+foo.should.have.lengthOf(3);
+tea.should.have.property('flavors')
+  .with.lengthOf(3);
+```
+
+Expect
+
+```
+var expect = chai.expect;
+
+expect(foo).to.be.a('string');
+expect(foo).to.equal('bar');
+expect(foo).to.have.lengthOf(3);
+expect(tea).to.have.property('flavors')
+  .with.lengthOf(3);
+```
+
+Assert
+
+```
+var assert = chai.assert;
+
+assert.typeOf(foo, 'string');
+assert.equal(foo, 'bar');
+assert.lengthOf(foo, 3)
+assert.property(tea, 'flavors');
+assert.lengthOf(tea.flavors, 3);
+```             
+
+				
+### sinon
+
+JavaScript里的测试监视(spy)、桩(stub)和仿制(mock)功能. http://sinonjs.org/
+
+```
+function once(fn) {
+    var returnValue, called = false;
+    return function () {
+        if (!called) {
+            called = true;
+            returnValue = fn.apply(this, arguments);
+        }
+        return returnValue;
+    };
+}
+```
+
+测试
+
+```
+it('calls the original function', function () {
+    var callback = sinon.spy();
+    var proxy = once(callback);
+
+    proxy();
+
+    assert(callback.called);
+});
+```
+
+
+推荐
+
+- http://jaketrent.com/post/sinon-spies-vs-stubs/ 推荐
+- https://semaphoreci.com/community/tutorials/best-practices-for-spies-stubs-and-mocks-in-sinon-js
+
+
+### supertest 
+
+简化express项目测试
+
+https://github.com/visionmedia/supertest
+
+
+```
+const request = require('supertest');
+const express = require('express');
+
+const app = express();
+
+app.get('/user', function(req, res) {
+  res.status(200).json({ name: 'tobi' });
+});
+
+request(app)
+  .get('/user')
+  .expect('Content-Type', /json/)
+  .expect('Content-Length', '15')
+  .expect(200)
+  .end(function(err, res) {
+    if (err) throw err;
+  });
+```
+
+实现原理也非常简单，http.createServer可以去到port，传给supertest，解决了ip和端口，剩下就是path和参数等了，所以更简单、专注
+
+
+### zombie
+
+浏览器测试
+
+Insanely fast, full-stack, headless browser testing using node.js http://zombie.js.org/
+
+
+```
+const Browser = require('zombie');
+
+// We're going to make requests to http://example.com/signup
+// Which will be routed to our test server localhost:3000
+Browser.localhost('example.com', 3000);
+
+describe('User visits signup page', function() {
+
+  const browser = new Browser();
+
+  before(function(done) {
+    browser.visit('/signup', done);
+  });
+
+  describe('submits form', function() {
+
+    before(function(done) {
+      browser
+        .fill('email',    'zombie@underworld.dead')
+        .fill('password', 'eat-the-living')
+        .pressButton('Sign Me Up!', done);
+    });
+
+    it('should be successful', function() {
+      browser.assert.success();
+    });
+
+    it('should see welcome page', function() {
+      browser.assert.text('title', 'Welcome To Brains Depot');
+    });
+  });
+});
+```
+
+
+### Cucumber
+
+用户故事：User Story。这是一个从属于产品设计的概念，它所指的，是从用户的角度来描述用户需求，要使用用户可以理解的业务预研来描述、切忌使用技术术语。
+
+> As a role, I want goal/desire so that benefit.
+
+即：
+
+- 角色：谁
+- 活动：需要做什么
+- 价值：为什么
+
+先定义features/documentation.feature文件
+
+```
+	# features/documentation.feature
+	Feature: Example feature
+	  As a user of Cucumber.js
+	  I want to have documentation on Cucumber
+	  So that I can concentrate on building awesome applications
+
+	  Scenario: Reading documentation
+	    Given I am on the Cucumber.js GitHub repository
+	    When I click on "CLI"
+	    Then I should see "Running specific features"
+```
+
+```
+// features/support/world.js
+require('chromedriver')
+var seleniumWebdriver = require('selenium-webdriver');
+var {defineSupportCode} = require('cucumber');
+
+function CustomWorld() {
+  this.driver = new seleniumWebdriver.Builder()
+    .forBrowser('chrome')
+    .build();
+}
+
+defineSupportCode(function({setWorldConstructor}) {
+  setWorldConstructor(CustomWorld)
+})
+```
+
+```
+// features/step_definitions/hooks.js
+var {defineSupportCode} = require('cucumber');
+
+defineSupportCode(function({After}) {
+  After(function() {
+    return this.driver.quit();
+  });
+});
+```
+
+
+```
+// features/step_definitions/browser_steps.js
+var seleniumWebdriver = require('selenium-webdriver');
+var {defineSupportCode} = require('cucumber');
+
+defineSupportCode(function({Given, When, Then}) {
+  Given('I am on the Cucumber.js GitHub repository', function() {
+    return this.driver.get('https://github.com/cucumber/cucumber-js/tree/master');
+  });
+
+  When('I click on {stringInDoubleQuotes}', function (text) {
+    return this.driver.findElement({linkText: text}).then(function(element) {
+      return element.click();
+    });
+  });
+
+  Then('I should see {stringInDoubleQuotes}', function (text) {
+    var xpath = "//*[contains(text(),'" + text + "')]";
+    var condition = seleniumWebdriver.until.elementLocated({xpath: xpath});
+    return this.driver.wait(condition, 5000);
+  });
+});
+```
+
+如果不执行严格bdd，基本上用不到。https://github.com/cucumber/cucumber-js/
 
 ### 代码覆盖率
 
@@ -477,11 +708,38 @@ Debugger listening on 127.0.0.1:5858
 
 ![Node Internal Debug Arch](img/node_internal_debug_arch.png)
 
-
 ## 举例
 
 ![Node Debuggers Arch](img/node_debuggers_arch.png)
 
+```
+let vm = require('vm')
+let debug = vm.runInDebugContext('Debug')
+
+function test() {}
+
+debug.setListener((event, execState, eventData, data) => {
+    if (event != debug.DebugEvent.Break) return
+
+    var script   = eventData.func().script().name()
+    var line     = eventData.sourceLine()
+    var col      = eventData.sourceColumn()
+
+    var location = script + ":" + line + ":" + col
+
+    var funcName = eventData.func().name()
+    if (funcName != "") {
+        location += " " + funcName + "()"
+    }
+
+    console.log(location)
+})
+
+debug.setBreakPoint(test, 0, 0)
+
+test()
+// /Users/sang/workspace/github/node-debug-tutorial/a.js:3:17 test()
+```
 
 ## 内置的Node.js Debugger
 
