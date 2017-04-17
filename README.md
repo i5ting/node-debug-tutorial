@@ -449,6 +449,110 @@ node_modules/.bin/gulp test
     "test": "./node_modules/.bin/mocha -u tdd"
   },
 		
+
+# 2种模式
+
+## 本地调试Launch Program
+
+简单说，就是直接执行，上文最简单的断点调试都属于这种模式
+
+## 远程调试Attach to Process
+
+简单说，是调试某个已启动的线程
+
+比如，我在终端里，node --debug启动了某个程序，
+
+```
+node --debug app.js
+Debugger listening on 127.0.0.1:5858
+```
+
+这样就启动了debugger，然后你就可以在vscode或者node inspector里attach里
+
+![Attach](img/attach.png)
+
+# 原理
+
+## 架构
+
+![Node Internal Debug Arch](img/node_internal_debug_arch.png)
+
+
+## 举例
+
+![Node Debuggers Arch](img/node_debuggers_arch.png)
+
+
+## 内置的Node.js Debugger
+
+> Node.js includes a full-featured out-of-process debugging utility accessible via a simple TCP-based protocol and built-in debugging client.
+
+To start the built-in debugger you have to start your application this way:
+
+> node debug app.js 
+
+
+## Chrome Debugger
+
+> v8-inspector protocol is available in node 6.3+ and enables debugging & profiling of Node.js apps.
+
+2016年5月份，谷歌工程师 ofrobots 提交了一个Add v8_inspector support的PR。同时在5月份的 DevTools Google I/O talk (Youtube视频，需翻墙) 有提到此功能。
+
+就是说 v8_inspector 可以让 DevTools 直接连接 Node.js的Debugger进行调试。
+
+现如今，新版本的Chrome浏览器和新版本的Node.js支持通过一个新的调试协议能互相直接通讯了，就不再需要node-inspector了。
+
+版本支持
+
+- Node.js 6.3+
+- Chrome 55+
+
+## 不在使用的node-inspector模块
+
+![](img/node-inspector.png)
+
+
+
+# Other
+
+
+## Chrome DevTools
+
+要求
+
+- 1) Node.js 6.3+
+- 2) Chrome 55+
+
+步骤
+
+- 开启chrome://flags/#enable-devtools-experiments URL
+- 启动 Developer Tools experiments flag
+- 重启 Chrome
+- 打开 DevTools Setting -> Experiments tab (重启之后的才能看见)
+- 按下 "SHIFT" 6 次
+- 选中 "Node debugging" 复选框
+- 打开/关闭 DevTools
+
+![Chromedevtol](img/chromedevtol.png)
+
+https://blog.hospodarets.com/nodejs-debugging-in-chrome-devtools
+
+## devtool
+
+另外推荐一个electron包装的devtool，也非常好
+
+https://github.com/Jam3/devtool
+
+![Devtoo](img/devtoo.gif)
+
+https://mattdesl.svbtle.com/debugging-nodejs-in-chrome-devtools
+
+## debug模块
+
+> DEBUG=express* node app.js  
+
+![Express Debug](express-debug.png)
+
 ## 资源
 
 - [debugger官方文档](http://nodejs.org/api/debugger.html)
@@ -471,25 +575,4 @@ node_modules/.bin/gulp test
 - https://github.com/tj/superagent/blob/master/test/node/agency.js（api test示例）
 - https://github.com/i5ting/js-tools-best-practice/blob/master/doc/Gulp.md
 - https://github.com/SBoudrias/gulp-istanbul
-
-# 2种模式
-
-## 本地调试Launch Program
-
-简单说，就是直接执行，上文最简单的断点调试都属于这种模式
-
-## 远程调试Attach to Process
-
-简单说，是调试某个已启动的线程
-
-比如，我在终端里，node --debug启动了某个程序，
-
-```
-node --debug app.js
-Debugger listening on 127.0.0.1:5858
-```
-
-这样就启动了debugger，然后你就可以在vscode或者node inspector里attach里
-
-![Attach](img/attach.png)
 

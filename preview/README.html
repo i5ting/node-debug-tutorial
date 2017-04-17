@@ -647,6 +647,114 @@ gulp.task(&#39;watch&#39;,[&#39;test&#39;], function() {
     &quot;test&quot;: &quot;./node_modules/.bin/mocha -u tdd&quot;
   },</p>
 
+<h1>2种模式</h1>
+
+<h2>本地调试Launch Program</h2>
+
+<p>简单说，就是直接执行，上文最简单的断点调试都属于这种模式</p>
+
+<h2>远程调试Attach to Process</h2>
+
+<p>简单说，是调试某个已启动的线程</p>
+
+<p>比如，我在终端里，node --debug启动了某个程序，</p>
+<div class="highlight"><pre><span></span>node --debug app.js
+Debugger listening on 127.0.0.1:5858
+</pre></div>
+<p>这样就启动了debugger，然后你就可以在vscode或者node inspector里attach里</p>
+
+<p><img src="img/attach.png" alt="Attach"></p>
+
+<h1>原理</h1>
+
+<h2>架构</h2>
+
+<p><img src="img/node_internal_debug_arch.png" alt="Node Internal Debug Arch"></p>
+
+<h2>举例</h2>
+
+<p><img src="img/node_debuggers_arch.png" alt="Node Debuggers Arch"></p>
+
+<h2>内置的Node.js Debugger</h2>
+
+<blockquote>
+<p>Node.js includes a full-featured out-of-process debugging utility accessible via a simple TCP-based protocol and built-in debugging client.</p>
+</blockquote>
+
+<p>To start the built-in debugger you have to start your application this way:</p>
+
+<blockquote>
+<p>node debug app.js </p>
+</blockquote>
+
+<h2>Chrome Debugger</h2>
+
+<blockquote>
+<p>v8-inspector protocol is available in node 6.3+ and enables debugging &amp; profiling of Node.js apps.</p>
+</blockquote>
+
+<p>2016年5月份，谷歌工程师 ofrobots 提交了一个Add v8_inspector support的PR。同时在5月份的 DevTools Google I/O talk (Youtube视频，需翻墙) 有提到此功能。</p>
+
+<p>就是说 v8_inspector 可以让 DevTools 直接连接 Node.js的Debugger进行调试。</p>
+
+<p>现如今，新版本的Chrome浏览器和新版本的Node.js支持通过一个新的调试协议能互相直接通讯了，就不再需要node-inspector了。</p>
+
+<p>版本支持</p>
+
+<ul>
+<li>Node.js 6.3+</li>
+<li>Chrome 55+</li>
+</ul>
+
+<h2>不在使用的node-inspector模块</h2>
+
+<p><img src="img/node-inspector.png" alt=""></p>
+
+<h1>Other</h1>
+
+<h2>Chrome DevTools</h2>
+
+<p>要求</p>
+
+<ul>
+<li>1) Node.js 6.3+</li>
+<li>2) Chrome 55+</li>
+</ul>
+
+<p>步骤</p>
+
+<ul>
+<li>开启chrome://flags/#enable-devtools-experiments URL</li>
+<li>启动 Developer Tools experiments flag</li>
+<li>重启 Chrome</li>
+<li>打开 DevTools Setting -&gt; Experiments tab (重启之后的才能看见)</li>
+<li>按下 &quot;SHIFT&quot; 6 次</li>
+<li>选中 &quot;Node debugging&quot; 复选框</li>
+<li>打开/关闭 DevTools</li>
+</ul>
+
+<p><img src="img/chromedevtol.png" alt="Chromedevtol"></p>
+
+<p>https://blog.hospodarets.com/nodejs-debugging-in-chrome-devtools</p>
+
+<h2>devtool</h2>
+
+<p>另外推荐一个electron包装的devtool，也非常好</p>
+
+<p>https://github.com/Jam3/devtool</p>
+
+<p><img src="img/devtoo.gif" alt="Devtoo"></p>
+
+<p>https://mattdesl.svbtle.com/debugging-nodejs-in-chrome-devtools</p>
+
+<h2>debug模块</h2>
+
+<blockquote>
+<p>DEBUG=express* node app.js  </p>
+</blockquote>
+
+<p><img src="express-debug.png" alt="Express Debug"></p>
+
 <h2>资源</h2>
 
 <ul>
@@ -668,24 +776,6 @@ gulp.task(&#39;watch&#39;,[&#39;test&#39;], function() {
 <li><p>https://github.com/i5ting/js-tools-best-practice/blob/master/doc/Gulp.md</p></li>
 <li><p>https://github.com/SBoudrias/gulp-istanbul</p></li>
 </ul>
-
-<h1>2种模式</h1>
-
-<h2>本地调试Launch Program</h2>
-
-<p>简单说，就是直接执行，上文最简单的断点调试都属于这种模式</p>
-
-<h2>远程调试Attach to Process</h2>
-
-<p>简单说，是调试某个已启动的线程</p>
-
-<p>比如，我在终端里，node --debug启动了某个程序，</p>
-<div class="highlight"><pre><span></span>node --debug app.js
-Debugger listening on 127.0.0.1:5858
-</pre></div>
-<p>这样就启动了debugger，然后你就可以在vscode或者node inspector里attach里</p>
-
-<p><img src="img/attach.png" alt="Attach"></p>
 
 			          	</article>
 			        </div>
