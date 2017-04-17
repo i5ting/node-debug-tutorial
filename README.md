@@ -385,7 +385,7 @@ vsc调试使用方法也很简单,步骤如下：
 - ava
 - jest
 
-### 更多测试
+更多测试
 
 	npm install --save-dev chai
 	npm install --save-dev sinon
