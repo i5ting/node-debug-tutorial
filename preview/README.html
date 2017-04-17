@@ -837,17 +837,18 @@ gulp.task(&#39;watch&#39;,[&#39;test&#39;], function() {
 如果你不熟悉gulp，可以再这里https://github.com/i5ting/js-tools-best-practice/blob/master/doc/Gulp.md学习</p>
 
 <p>修改package.json</p>
-
-<p>&quot;scripts&quot;: {
+<div class="highlight"><pre><span></span>  &quot;scripts&quot;: {
     &quot;start&quot;: &quot;./node_modules/.bin/supervisor ./bin/www&quot;,
     &quot;test&quot;: &quot;./node_modules/.bin/mocha -u tdd&quot;
-  },</p>
-
+  },
+</pre></div>
 <h1>2种模式</h1>
 
 <h2>本地调试Launch Program</h2>
 
 <p>简单说，就是直接执行，上文最简单的断点调试都属于这种模式</p>
+
+<p>举例说明单个文件调试，尤其重要</p>
 
 <h2>远程调试Attach to Process</h2>
 
