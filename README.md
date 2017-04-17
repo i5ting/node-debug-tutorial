@@ -675,17 +675,20 @@ node_modules/.bin/gulp test
 
 修改package.json
 
+```
   "scripts": {
     "start": "./node_modules/.bin/supervisor ./bin/www",
     "test": "./node_modules/.bin/mocha -u tdd"
   },
-		
+```		
 
 # 2种模式
 
 ## 本地调试Launch Program
 
 简单说，就是直接执行，上文最简单的断点调试都属于这种模式
+
+举例说明单个文件调试，尤其重要
 
 ## 远程调试Attach to Process
 
