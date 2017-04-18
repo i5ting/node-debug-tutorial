@@ -4,10 +4,10 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-    {
+        {
             "type": "node",
             "request": "launch",
-            "name": "启动单个程序",
+            "name": "Launch File",
             "program": "${file}"
         },
         {

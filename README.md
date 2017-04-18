@@ -772,6 +772,31 @@ To start the built-in debugger you have to start your application this way:
 
 ![](img/node-inspector.png)
 
+## VSCode配置
+
+launch.json里有2种关于调试的配置
+
+- 通过旧版本协议附加（node debug），Node.js 6.3-
+- 通过检查器协议附加（v8-inspector），版本依赖是Node.js 6.3+
+
+```
+       {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach (Inspector Protocol)",
+            "port": 9229,
+            "protocol": "inspector"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach (Legacy Protocol)",
+            "port": 5858,
+            "protocol": "legacy"
+        },
+```
+
+通过这个我们也可能看出调试协议的变化
 
 
 # Other

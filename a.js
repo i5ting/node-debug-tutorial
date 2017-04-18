@@ -3,7 +3,7 @@ let debug = vm.runInDebugContext('Debug')
 
 function test() {}
 
-debug.setListener((event, execState, eventData, data) => {
+d ebug.setListener((event, execState, eventData, data) => {
     if (event != debug.DebugEvent.Break) return
 
     var script   = eventData.func().script().name()
