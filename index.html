@@ -933,6 +933,31 @@ test()
 
 <p><img src="img/node-inspector.png" alt=""></p>
 
+<h2>VSCode配置</h2>
+
+<p>launch.json里有2种关于调试的配置</p>
+
+<ul>
+<li>通过旧版本协议附加（node debug），Node.js 6.3-</li>
+<li>通过检查器协议附加（v8-inspector），版本依赖是Node.js 6.3+</li>
+</ul>
+<div class="highlight"><pre><span></span>       {
+            &quot;type&quot;: &quot;node&quot;,
+            &quot;request&quot;: &quot;attach&quot;,
+            &quot;name&quot;: &quot;Attach (Inspector Protocol)&quot;,
+            &quot;port&quot;: 9229,
+            &quot;protocol&quot;: &quot;inspector&quot;
+        },
+        {
+            &quot;type&quot;: &quot;node&quot;,
+            &quot;request&quot;: &quot;attach&quot;,
+            &quot;name&quot;: &quot;Attach (Legacy Protocol)&quot;,
+            &quot;port&quot;: 5858,
+            &quot;protocol&quot;: &quot;legacy&quot;
+        },
+</pre></div>
+<p>通过这个我们也可能看出调试协议的变化</p>
+
 <h1>Other</h1>
 
 <h2>Chrome DevTools</h2>
