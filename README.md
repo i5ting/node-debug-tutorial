@@ -843,13 +843,10 @@ https://mattdesl.svbtle.com/debugging-nodejs-in-chrome-devtools
 
 - [debugger官方文档](http://nodejs.org/api/debugger.html)
 - [node-inspector仓库地址](https://github.com/node-inspector/node-inspector)
-
 - [nodeunit](https://github.com/caolan/nodeunit)
 - [mocha](https://github.com/mochajs/mocha)
-
 - https://github.com/baryon/tracer
 - http://www.habdas.org/node-js-debugging-primer/
-
 - https://github.com/visionmedia/mocha
 - http://visionmedia.github.io/mocha/
 - http://mochajs.org/
@@ -861,4 +858,8 @@ https://mattdesl.svbtle.com/debugging-nodejs-in-chrome-devtools
 - https://github.com/tj/superagent/blob/master/test/node/agency.js（api test示例）
 - https://github.com/i5ting/js-tools-best-practice/blob/master/doc/Gulp.md
 - https://github.com/SBoudrias/gulp-istanbul
+- [Debugger Documentation](https://nodejs.org/api/debugger.html)
+- [EPS: `node inspect` CLI debugger](https://github.com/nodejs/node-eps/pull/42)
+- [Debugger Protocol Viewer](https://chromedevtools.github.io/debugger-protocol-viewer/)
+- [Command Line API](https://developers.google.com/web/tools/chrome-devtools/debug/command-line/command-line-reference?hl=en)
 
