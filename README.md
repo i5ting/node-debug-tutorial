@@ -841,6 +841,7 @@ https://mattdesl.svbtle.com/debugging-nodejs-in-chrome-devtools
 
 ## 资源
 
+- https://nodejs.org/en/docs/inspector/
 - [debugger官方文档](http://nodejs.org/api/debugger.html)
 - [node-inspector仓库地址](https://github.com/node-inspector/node-inspector)
 - [nodeunit](https://github.com/caolan/nodeunit)
