@@ -848,8 +848,7 @@ https://mattdesl.svbtle.com/debugging-nodejs-in-chrome-devtools
 - [mocha](https://github.com/mochajs/mocha)
 - https://github.com/baryon/tracer
 - http://www.habdas.org/node-js-debugging-primer/
-- https://github.com/visionmedia/mocha
-- http://visionmedia.github.io/mocha/
+- https://github.com/mochajs/mocha
 - http://mochajs.org/
 - https://github.com/chaijs/chai
 - http://chaijs.com/
