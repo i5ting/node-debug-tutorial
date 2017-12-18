@@ -338,7 +338,6 @@ curl -G -d "test=string" http://127.0.0.1:5008/
 
 ![](img/express-debug.png)
 
-
 ## vscode
 
 为什么选用vsc，一个原因就是因为调试
@@ -822,6 +821,33 @@ launch.json里有2种关于调试的配置
 ![Chromedevtol](img/chromedevtol.png)
 
 https://blog.hospodarets.com/nodejs-debugging-in-chrome-devtools
+
+### node --version > 8.x.x
+
+这时候命令行会显示
+
+```
+Debugger listening on ws://127.0.0.1:9229/3e4a2794-11ac-4471-bf3c-a5849e92e20a
+For help see https://nodejs.org/en/docs/inspector
+```
+
+这时候参考[官方文档](https://nodejs.org/en/docs/guides/debugging-getting-started/#command-line-options)
+在浏览器中输入
+
+```
+http://[host:port]/json/list 
+http://127.0.0.1/9229/json/list 
+```
+
+将json对象中的devtoolsFrontendUrl复制到浏览器中打开chrome devtools
+如果无法打开，则
+
+```
+1、 打开chrome://inspect
+2、 点击Remote Target下面的inspect来打开chrome devtools
+```
+
+![](img/devtools.png)
 
 ## devtool
 
