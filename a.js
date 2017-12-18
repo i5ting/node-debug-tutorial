@@ -3,20 +3,16 @@ let debug = vm.runInDebugContext('Debug')
 
 function test() {}
 
-d ebug.setListener((event, execState, eventData, data) => {
+debug.setListener((event, execState, eventData, data) => {
     if (event != debug.DebugEvent.Break) return
-
     var script   = eventData.func().script().name()
     var line     = eventData.sourceLine()
     var col      = eventData.sourceColumn()
-
     var location = script + ":" + line + ":" + col
-
     var funcName = eventData.func().name()
     if (funcName != "") {
         location += " " + funcName + "()"
     }
-
     console.log(location)
 })
 
